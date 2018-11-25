@@ -1,4 +1,4 @@
-# -BBR-
+# 魔改版的BBR和暴力魔改版BBR
 
 借鉴Linux-NetSpeed的一键脚本，通过修改debian的内核，安装最新版本的debian内核，并开启魔改版的BBR和暴力魔改版bbr
 

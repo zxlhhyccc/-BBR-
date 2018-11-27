@@ -182,7 +182,7 @@ startlotserver(){
 		apt-get update
 		apt-get install -y unzip
 	fi
-	wget --no-check-certificate -O appex.sh https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh && chmod +x appex.sh && bash appex.sh install
+	wget --no-check-certificate -O appex.sh https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/appex.sh && chmod +x appex.sh && bash appex.sh install
 	rm -f appex.sh
 	start_menu
 }
@@ -226,7 +226,7 @@ remove_all(){
 	sed -i '/net.ipv4.tcp_timestamps/d' /etc/sysctl.conf
 	sed -i '/net.ipv4.tcp_max_orphans/d' /etc/sysctl.conf
 	if [[ -e /appex/bin/serverSpeeder.sh ]]; then
-		wget --no-check-certificate -O appex.sh https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh && chmod +x appex.sh && bash appex.sh uninstall
+		wget --no-check-certificate -O appex.sh https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/appex.sh && chmod +x appex.sh && bash appex.sh uninstall
 		rm -f appex.sh
 	fi
 	clear

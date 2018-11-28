@@ -31,7 +31,7 @@ installbbr(){
 		mkdir bbr && cd bbr
 		wget -N --no-check-certificate http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.141/linux-headers-4.9.141-0409141_4.9.141-0409141.201811271631_all.deb
 		#wget -N --no-check-certificate http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.140/linux-headers-4.9.140-0409140-generic_4.9.140-0409140.201811231231_amd64.deb
-		wget -N --no-check-certificate http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.141/linux-image-4.9.141-0409141-generic_4.9.141-0409141.201811271631_amd64.debeb
+		wget -N --no-check-certificate http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.141/linux-image-4.9.141-0409141-generic_4.9.141-0409141.201811271631_amd64.deb
 	
 		dpkg -i linux-headers-4.9.141-0409141_4.9.141-0409141.201811271631_all.deb
 		#dpkg -i linux-headers-4.9.140-0409140-generic_4.9.140-0409140.201811231231_amd64.deb

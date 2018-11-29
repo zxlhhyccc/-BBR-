@@ -38,7 +38,7 @@ apt-get update
 
 apt-get install gcc-4.9 g++-4.9 g++-4.9-multilib
 
-6、该脚本默认安装的内核是（4.9.140），如果仅使用该内核，直接运行：
+6、该脚本默认安装的内核是（4.9.141），如果仅使用该内核，直接运行：
 
 wget -N --no-check-certificate "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/bbr.sh"  && chmod +x bbr.sh && ./bbr.sh 
 

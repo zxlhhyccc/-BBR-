@@ -44,8 +44,14 @@ apt-get install gcc-4.9 g++-4.9 g++-4.9-multilib
 
 6、该脚本默认安装的内核是（4.9.141），如果仅使用该内核，直接运行：
 
+A、不带gcc-4.9菜单需按第5步先安装gcc-4.9的脚本：
+------
 wget -N --no-check-certificate "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/bbr.sh"  && chmod +x bbr.sh && ./bbr.sh 
 ------
+B、带gcc-4.9安装菜单，在安装魔改版内核后，先执行菜单安装gcc-4.9，然后再安装魔改版BBR的一键脚本：
+------
+wget -N --no-check-certificate "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/bbr/bbr.sh" && chmod +x bbr.sh && ./bbr.sh
+----
 7、centos7开启魔改版BBR，请使用centos7_bbr.sh,改脚本最新内核已修改为4.9.5-1，如果需升级内核，请比照上述方法修改
 
 wget -N --no-check-certificate "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7_bbr.sh"  && chmod +x centos7_bbr.sh && ./centos7_bbr.sh

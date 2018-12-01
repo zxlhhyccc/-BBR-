@@ -38,7 +38,7 @@ installbbr(){
 		dpkg -i linux-image-4.9.141-0409141-generic_4.9.141-0409141.201811291439_amd64.deb
 		cd .. && rm -rf bbr
 	fi
-	installgcc-4.9
+	install_gcc4.9
 	detele_kernel
 	BBR_grub
 	echo -e "${Tip} 重启VPS后，请重新运行脚本开启${Red_font_prefix}BBR/BBR魔改版${Font_color_suffix}"
@@ -50,8 +50,8 @@ installbbr(){
 	fi
 }
 
-#安装gcc-4.9
-installgcc-4.9(){
+#安装gcc4.9
+install_gcc4.9(){
         if [[ "${release}" == "ubuntu" && "${version}" = "14" ]]; then
                  echo "deb http://ftp.us.debian.org/debian/ jessie main contrib non-free">>/etc/apt/sources.list
 	         echo "deb-src http://ftp.us.debian.org/debian/ jessie main contrib non-free">>/etc/apt/sources.list

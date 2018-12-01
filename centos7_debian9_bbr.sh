@@ -54,6 +54,24 @@ installbbr(){
 	fi
 }
 
+#安装gcc4.9
+install_gcc4.9(){
+        if [[ "${release}" == "debian" ]]; then
+	rm -f /etc/apt/sources.list
+echo "
+deb http://deb.debian.org/debian/ stretch main
+deb-src http://deb.debian.org/debian/ stretch main
+deb http://security.debian.org/ stretch/updates main
+deb-src http://security.debian.org/ stretch/updates main
+deb http://deb.debian.org/debian/ stretch-updates main
+deb-src http://deb.debian.org/debian/ stretch-updates main
+deb http://ftp.us.debian.org/debian/ jessie main contrib non-free
+deb-src http://ftp.us.debian.org/debian/ jessie main contrib non-free"|sed '/^#/d;/^\s*$/d'>/etc/apt/sources.list
+                 apt-get update
+                 apt-get -y install make gcc-4.9 g++-4.9 g++-4.9-multilib
+	 fi
+ }
+ 
 #安装Lotserver内核
 installlot(){
 	if [[ "${release}" == "centos" ]]; then
@@ -122,9 +140,8 @@ startbbrmod(){
 			add-apt-repository ppa:ubuntu-toolchain-r/test -y
 			apt-get update
 		fi
-		apt-get -y install make gcc-4.9
 		mkdir bbrmod && cd bbrmod
-		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/TCP_BBR/master/v4.19_rc/tcp_tsunami.c
+		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/tcp_tsunami.c
 		echo "obj-m:=tcp_tsunami.o" > Makefile
 		make -C /lib/modules/$(uname -r)/build M=`pwd` modules CC=/usr/bin/gcc-4.9
 		install tcp_tsunami.ko /lib/modules/$(uname -r)/kernel
@@ -161,9 +178,8 @@ startbbrmod_nanqinlang(){
 			add-apt-repository ppa:ubuntu-toolchain-r/test -y
 			apt-get update
 		fi
-		apt-get -y install make gcc-4.9
 		mkdir bbrmod && cd bbrmod
-		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/TCP_BBR/master/v4.19_rc/tcp_nanqinlang.c
+		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/tcp_nanqinlang.c
 		echo "obj-m := tcp_nanqinlang.o" > Makefile
 		make -C /lib/modules/$(uname -r)/build M=`pwd` modules CC=/usr/bin/gcc-4.9
 		install tcp_nanqinlang.ko /lib/modules/$(uname -r)/kernel

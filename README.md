@@ -46,3 +46,8 @@ wget -N --no-check-certificate "https://raw.githubusercontent.com/zxlhhyccc/-BBR
 
 wget -N --no-check-certificate "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7_bbr.sh"  && chmod +x centos7_bbr.sh && ./centos7_bbr.sh
 -----
+centos7内核版本下载地址：
+
+https://elrepo.org/linux/kernel/el7/x86_64/RPMS/
+
+http://mirror.rc.usf.edu/compute_lock/elrepo/kernel/el7/x86_64/RPMS/

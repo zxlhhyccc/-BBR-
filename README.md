@@ -52,6 +52,10 @@ B、带gcc-4.9安装菜单，在安装魔改版内核后，先执行菜单安装
 ------
 wget -N --no-check-certificate "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/bbr/bbr.sh" && chmod +x bbr.sh && ./bbr.sh
 ----
+C、centos7和debian9合一安装魔改版BBR内核脚本（菜单安装gcc-4.9为debian专用，centos7不需安装）：
+----
+wget -N --no-check-certificate  "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7_debian9_bbr.sh" && chmod +x centos7_debian9_bbr.sh && ./centos7_debian9_bbr.sh
+-----
 7、centos7开启魔改版BBR，请使用centos7_bbr.sh,改脚本最新内核已修改为4.9.5-1，如果需升级内核，请比照上述方法修改
 
 wget -N --no-check-certificate "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7_bbr.sh"  && chmod +x centos7_bbr.sh && ./centos7_bbr.sh

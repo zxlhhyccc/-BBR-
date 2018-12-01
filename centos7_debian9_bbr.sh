@@ -329,7 +329,7 @@ clear
 echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
   -- 就是爱生活 | 94ish.me --
   
- ${Green_font_prefix}0.${Font_color_suffix} 升级脚本
+ ${Green_font_prefix}0.${Font_color_suffix} 升级脚本(请不要升级脚本,否则需重新配置)
 ————————————内核管理————————————
  ${Green_font_prefix}1.${Font_color_suffix} 安装 BBR/BBR魔改版内核
  ${Green_font_prefix}2.${Font_color_suffix} 安装 Lotserver(锐速)内核
@@ -341,7 +341,7 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
 ————————————杂项管理————————————
  ${Green_font_prefix}7.${Font_color_suffix} 卸载全部加速
  ${Green_font_prefix}8.${Font_color_suffix} 系统配置优化
- ${Green_font_prefix}9.${Font_color_suffix} 安装gcc-4.9
+ ${Green_font_prefix}9.${Font_color_suffix} 安装gcc-4.9(魔改版BBR需gcc-4.9编译)
  ${Green_font_prefix}a.${Font_color_suffix} 退出脚本
 ————————————————————————————————" && echo
 

@@ -52,7 +52,7 @@ installbbr(){
 
 #安装gcc4.9
 install_gcc4.9(){
-        if [[ "${release}" == "ubuntu" && "${version}" = "14" ]]; then
+        if [[ "${release}" == "debian" ]]; then
                  echo "deb http://ftp.us.debian.org/debian/ jessie main contrib non-free">>/etc/apt/sources.list
 	         echo "deb-src http://ftp.us.debian.org/debian/ jessie main contrib non-free">>/etc/apt/sources.list
 	         apt-get update

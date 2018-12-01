@@ -52,8 +52,16 @@ installbbr(){
 #安装gcc4.9
 install_gcc4.9(){
         if [[ "${release}" == "debian" ]]; then
-                 echo "deb http://ftp.us.debian.org/debian/ jessie main contrib non-free">>/etc/apt/sources.list
-	         echo "deb-src http://ftp.us.debian.org/debian/ jessie main contrib non-free">>/etc/apt/sources.list
+	rm -f /etc/apt/sources.list
+echo "
+deb http://deb.debian.org/debian/ stretch main
+deb-src http://deb.debian.org/debian/ stretch main
+deb http://security.debian.org/ stretch/updates main
+deb-src http://security.debian.org/ stretch/updates main
+deb http://deb.debian.org/debian/ stretch-updates main
+deb-src http://deb.debian.org/debian/ stretch-updates main
+deb http://ftp.us.debian.org/debian/ jessie main contrib non-free
+deb-src http://ftp.us.debian.org/debian/ jessie main contrib non-free"|sed '/^#/d;/^\s*$/d'>/etc/apt/sources.list
 	         apt-get update
                  apt-get -y install make gcc-4.9 g++-4.9 g++-4.9-multilib
 	 fi

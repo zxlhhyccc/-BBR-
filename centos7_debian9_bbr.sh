@@ -20,7 +20,8 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 
 #安装BBR内核
 installbbr(){
-	kernel_version="4.19.5"
+	kernel_version_centos7="4.19.5"
+	kernel_version_debian9="4.9.141"
 	if [[ "${release}" == "centos" ]]; then
 		#rpm --import http://${github}/bbr/${release}/RPM-GPG-KEY-elrepo.org
 		#yum install -y http://${github}/bbr/${release}/${version}/${bit}/kernel-ml-${kernel_version}.rpm
@@ -54,6 +55,23 @@ installbbr(){
 	fi
 }
 
+#安装gcc4.9
+install_gcc4.9(){
+        if [[ "${release}" == "debian" ]]; then
+	rm -f /etc/apt/sources.list
+echo "
+deb http://deb.debian.org/debian/ stretch main
+deb-src http://deb.debian.org/debian/ stretch main
+deb http://security.debian.org/ stretch/updates main
+deb-src http://security.debian.org/ stretch/updates main
+deb http://deb.debian.org/debian/ stretch-updates main
+deb-src http://deb.debian.org/debian/ stretch-updates main
+deb http://ftp.us.debian.org/debian/ jessie main contrib non-free
+deb-src http://ftp.us.debian.org/debian/ jessie main contrib non-free"|sed '/^#/d;/^\s*$/d'>/etc/apt/sources.list
+                 apt-get update
+                 apt-get -y install make gcc-4.9 g++-4.9 g++-4.9-multilib
+	 fi
+ }
 #安装Lotserver内核
 installlot(){
 	if [[ "${release}" == "centos" ]]; then
@@ -124,7 +142,7 @@ startbbrmod(){
 		fi
 		apt-get -y install make gcc-4.9
 		mkdir bbrmod && cd bbrmod
-		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/TCP_BBR/master/v4.19_rc/tcp_tsunami.c
+		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/tcp_tsunami.c
 		echo "obj-m:=tcp_tsunami.o" > Makefile
 		make -C /lib/modules/$(uname -r)/build M=`pwd` modules CC=/usr/bin/gcc-4.9
 		install tcp_tsunami.ko /lib/modules/$(uname -r)/kernel
@@ -140,7 +158,7 @@ startbbrmod(){
 	echo -e "${Info}魔改版BBR启动成功！"
 }
 
-#编译并启用BBR魔改
+#编译并启用暴力BBR魔改
 startbbrmod_nanqinlang(){
 	remove_all
 	if [[ "${release}" == "centos" ]]; then
@@ -163,7 +181,7 @@ startbbrmod_nanqinlang(){
 		fi
 		apt-get -y install make gcc-4.9
 		mkdir bbrmod && cd bbrmod
-		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/TCP_BBR/master/v4.19_rc/tcp_nanqinlang.c
+		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/tcp_nanqinlang.c
 		echo "obj-m := tcp_nanqinlang.o" > Makefile
 		make -C /lib/modules/$(uname -r)/build M=`pwd` modules CC=/usr/bin/gcc-4.9
 		install tcp_nanqinlang.ko /lib/modules/$(uname -r)/kernel
@@ -175,7 +193,8 @@ startbbrmod_nanqinlang(){
 	echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
 	echo "net.ipv4.tcp_congestion_control=nanqinlang" >> /etc/sysctl.conf
 	sysctl -p
-	echo -e "${Info}魔改版BBR启动成功！"
+    cd .. && rm -rf bbrmod
+	echo -e "${Info}暴力魔改版BBR启动成功！"
 }
 
 #启用Lotserver
@@ -312,7 +331,7 @@ clear
 echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]${Font_color_suffix}
   -- 就是爱生活 | 94ish.me --
   
- ${Green_font_prefix}0.${Font_color_suffix} 升级脚本
+ ${Green_font_prefix}0.${Font_color_suffix} 升级脚本(请不要升级脚本,否则升级后需重新修改脚本)
 ————————————内核管理————————————
  ${Green_font_prefix}1.${Font_color_suffix} 安装 BBR/BBR魔改版内核
  ${Green_font_prefix}2.${Font_color_suffix} 安装 Lotserver(锐速)内核
@@ -324,7 +343,8 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
 ————————————杂项管理————————————
  ${Green_font_prefix}7.${Font_color_suffix} 卸载全部加速
  ${Green_font_prefix}8.${Font_color_suffix} 系统配置优化
- ${Green_font_prefix}9.${Font_color_suffix} 退出脚本
+ ${Green_font_prefix}9.${Font_color_suffix} 安装gcc-4.9(debian9魔改版BBR需gcc-4.9编译)
+ ${Green_font_prefix}a.${Font_color_suffix} 退出脚本
 ————————————————————————————————" && echo
 
 	check_status
@@ -365,6 +385,9 @@ case "$num" in
 	optimizing_system
 	;;
 	9)
+	install_gcc4.9
+	;;
+	)
 	exit 1
 	;;
 	*)
@@ -380,11 +403,11 @@ esac
 #删除多余内核
 detele_kernel(){
 	if [[ "${release}" == "centos" ]]; then
-		rpm_total=`rpm -qa | grep kernel | grep -v "${kernel_version}" | grep -v "noarch" | wc -l`
+		rpm_total=`rpm -qa | grep kernel | grep -v "${kernel_version_centos7}" | grep -v "noarch" | wc -l`
 		if [ "${rpm_total}" > "1" ]; then
 			echo -e "检测到 ${rpm_total} 个其余内核，开始卸载..."
 			for((integer = 1; integer <= ${rpm_total}; integer++)); do
-				rpm_del=`rpm -qa | grep kernel | grep -v "${kernel_version}" | grep -v "noarch" | head -${integer}`
+				rpm_del=`rpm -qa | grep kernel | grep -v "${kernel_version_centos7}" | grep -v "noarch" | head -${integer}`
 				echo -e "开始卸载 ${rpm_del} 内核..."
 				yum remove -y ${rpm_del}
 				echo -e "卸载 ${rpm_del} 内核卸载完成，继续..."
@@ -394,11 +417,11 @@ detele_kernel(){
 			echo -e " 检测到 内核 数量不正确，请检查 !" && exit 1
 		fi
 	elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
-		deb_total=`dpkg -l | grep linux-image | awk '{print $2}' | grep -v "${kernel_version}" | wc -l`
+		deb_total=`dpkg -l | grep linux-image | awk '{print $2}' | grep -v "${kernel_version_debian9}" | wc -l`
 		if [ "${deb_total}" > "1" ]; then
 			echo -e "检测到 ${deb_total} 个其余内核，开始卸载..."
 			for((integer = 1; integer <= ${deb_total}; integer++)); do
-				deb_del=`dpkg -l|grep linux-image | awk '{print $2}' | grep -v "${kernel_version}" | head -${integer}`
+				deb_del=`dpkg -l|grep linux-image | awk '{print $2}' | grep -v "${kernel_version_debian9}" | head -${integer}`
 				echo -e "开始卸载 ${deb_del} 内核..."
 				apt-get purge -y ${deb_del}
 				echo -e "卸载 ${deb_del} 内核卸载完成，继续..."

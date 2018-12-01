@@ -33,15 +33,15 @@ installbbr(){
                 yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-tools-libs-4.19.5-1.el7.elrepo.x86_64.rpm
                 yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-tools-4.19.5-1.el7.elrepo.x86_64.rpm
 	elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
-	kernel_version="4.9.141"
+	kernel_version="4.9.142"
 		mkdir bbr && cd bbr
-		wget -N --no-check-certificate http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.141/linux-headers-4.9.141-0409141_4.9.141-0409141.201811291439_all.deb
-		wget -N --no-check-certificate http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.141/linux-headers-4.9.141-0409141-generic_4.9.141-0409141.201811291439_amd64.deb
-		wget -N --no-check-certificate http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.141/linux-image-4.9.141-0409141-generic_4.9.141-0409141.201811291439_amd64.deb
+		wget -N --no-check-certificate -O linux-headers_all.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.142/linux-headers-4.9.142-0409142_4.9.142-0409142.201812010931_all.deb
+		wget -N --no-check-certificate -O linux-headers_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.142/linux-headers-4.9.142-0409142-generic_4.9.142-0409142.201812010931_amd64.deb
+		wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.142/linux-image-4.9.142-0409142-generic_4.9.142-0409142.201812010931_amd64.deb
 	
-		dpkg -i linux-headers-4.9.141-0409141_4.9.141-0409141.201811291439_all.deb
-		dpkg -i linux-headers-4.9.141-0409141-generic_4.9.141-0409141.201811291439_amd64.deb
-		dpkg -i linux-image-4.9.141-0409141-generic_4.9.141-0409141.201811291439_amd64.deb
+		dpkg -i linux-headers_all.deb
+		dpkg -i linux-headers_amd64.deb
+		dpkg -i linux-image-generic_amd64.deb
 		cd .. && rm -rf bbr
 	fi
 	detele_kernel

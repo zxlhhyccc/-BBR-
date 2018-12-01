@@ -446,7 +446,6 @@ BBR_grub(){
                 exit 1
             fi
             grub2-set-default 0
-           grub2-mkconfig -o /boot/grub2/grub.cfg
         fi
     elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
         /usr/sbin/update-grub

@@ -21,7 +21,7 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 #安装BBR内核
 installbbr(){
 	if [[ "${release}" == "centos" ]]; then
-	kernel_version_centos7="4.19.5"
+	kernel_version="4.19.5"
 		#rpm --import http://${github}/bbr/${release}/RPM-GPG-KEY-elrepo.org
 		#yum install -y http://${github}/bbr/${release}/${version}/${bit}/kernel-ml-${kernel_version}.rpm
                 yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-4.19.5-1.el7.elrepo.x86_64.rpm
@@ -33,7 +33,7 @@ installbbr(){
                 yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-tools-libs-4.19.5-1.el7.elrepo.x86_64.rpm
                 yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-tools-4.19.5-1.el7.elrepo.x86_64.rpm
 	elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
-	kernel_version_debian9="4.9.141"
+	kernel_version="4.9.141"
 		mkdir bbr && cd bbr
 		wget -N --no-check-certificate http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.141/linux-headers-4.9.141-0409141_4.9.141-0409141.201811291439_all.deb
 		wget -N --no-check-certificate http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.141/linux-headers-4.9.141-0409141-generic_4.9.141-0409141.201811291439_amd64.deb
@@ -401,11 +401,11 @@ esac
 #删除多余内核
 detele_kernel(){
 	if [[ "${release}" == "centos" ]]; then
-		rpm_total=`rpm -qa | grep kernel | grep -v "${kernel_version_centos7}" | grep -v "noarch" | wc -l`
+		rpm_total=`rpm -qa | grep kernel | grep -v "${kernel_version}" | grep -v "noarch" | wc -l`
 		if [ "${rpm_total}" > "1" ]; then
 			echo -e "检测到 ${rpm_total} 个其余内核，开始卸载..."
 			for((integer = 1; integer <= ${rpm_total}; integer++)); do
-				rpm_del=`rpm -qa | grep kernel | grep -v "${kernel_version_centos7}" | grep -v "noarch" | head -${integer}`
+				rpm_del=`rpm -qa | grep kernel | grep -v "${kernel_version}" | grep -v "noarch" | head -${integer}`
 				echo -e "开始卸载 ${rpm_del} 内核..."
 				yum remove -y ${rpm_del}
 				echo -e "卸载 ${rpm_del} 内核卸载完成，继续..."
@@ -415,11 +415,11 @@ detele_kernel(){
 			echo -e " 检测到 内核 数量不正确，请检查 !" && exit 1
 		fi
 	elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
-		deb_total=`dpkg -l | grep linux-image | awk '{print $2}' | grep -v "${kernel_version_debian9}" | wc -l`
+		deb_total=`dpkg -l | grep linux-image | awk '{print $2}' | grep -v "${kernel_version}" | wc -l`
 		if [ "${deb_total}" > "1" ]; then
 			echo -e "检测到 ${deb_total} 个其余内核，开始卸载..."
 			for((integer = 1; integer <= ${deb_total}; integer++)); do
-				deb_del=`dpkg -l|grep linux-image | awk '{print $2}' | grep -v "${kernel_version_debian9}" | head -${integer}`
+				deb_del=`dpkg -l|grep linux-image | awk '{print $2}' | grep -v "${kernel_version}" | head -${integer}`
 				echo -e "开始卸载 ${deb_del} 内核..."
 				apt-get purge -y ${deb_del}
 				echo -e "卸载 ${deb_del} 内核卸载完成，继续..."

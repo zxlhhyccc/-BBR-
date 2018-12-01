@@ -340,7 +340,8 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
 ————————————杂项管理————————————
  ${Green_font_prefix}7.${Font_color_suffix} 卸载全部加速
  ${Green_font_prefix}8.${Font_color_suffix} 系统配置优化
- ${Green_font_prefix}9.${Font_color_suffix} 退出脚本
+ ${Green_font_prefix}9.${Font_color_suffix} 安装gcc-4.9
+ ${Green_font_prefix}a.${Font_color_suffix} 退出脚本
 ————————————————————————————————" && echo
 
 	check_status
@@ -351,7 +352,7 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
 		
 	fi
 echo
-read -p " 请输入数字 [0-9]:" num
+read -p " 请输入数字 [0-9,a]:" num
 case "$num" in
 	0)
 	Update_Shell
@@ -381,11 +382,14 @@ case "$num" in
 	optimizing_system
 	;;
 	9)
+	install_gcc4.9
+	;;
+	a)
 	exit 1
 	;;
 	*)
 	clear
-	echo -e "${Error}:请输入正确数字 [0-8]"
+	echo -e "${Error}:请输入正确数字 [0-9]"
 	sleep 5s
 	start_menu
 	;;

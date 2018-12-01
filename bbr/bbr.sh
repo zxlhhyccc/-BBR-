@@ -40,7 +40,6 @@ installbbr(){
 	fi
 	detele_kernel
 	BBR_grub
-	install_gcc4.9
 	echo -e "${Tip} 重启VPS后，请重新运行脚本开启${Red_font_prefix}BBR/BBR魔改版${Font_color_suffix}"
 	stty erase '^H' && read -p "需要重启VPS后，才能开启BBR/BBR魔改版，是否现在重启 ? [Y/n] :" yn
 	[ -z "${yn}" ] && yn="y"
@@ -329,7 +328,8 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
 ————————————杂项管理————————————
  ${Green_font_prefix}7.${Font_color_suffix} 卸载全部加速
  ${Green_font_prefix}8.${Font_color_suffix} 系统配置优化
- ${Green_font_prefix}9.${Font_color_suffix} 退出脚本
+ ${Green_font_prefix}9.${Font_color_suffix} 安装gcc-4.9
+ ${Green_font_prefix}A.${Font_color_suffix} 退出脚本
 ————————————————————————————————" && echo
 
 	check_status
@@ -370,6 +370,9 @@ case "$num" in
 	optimizing_system
 	;;
 	9)
+	install_gcc4.9
+	;;
+	A)
 	exit 1
 	;;
 	*)

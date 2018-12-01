@@ -385,7 +385,7 @@ case "$num" in
 	9)
 	install_gcc4.9
 	;;
-	)
+	a)
 	exit 1
 	;;
 	*)

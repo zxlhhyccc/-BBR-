@@ -38,9 +38,9 @@ installbbr(){
 		dpkg -i linux-image-4.9.141-0409141-generic_4.9.141-0409141.201811291439_amd64.deb
 		cd .. && rm -rf bbr
 	fi
-	install_gcc4.9
 	detele_kernel
 	BBR_grub
+	install_gcc4.9
 	echo -e "${Tip} 重启VPS后，请重新运行脚本开启${Red_font_prefix}BBR/BBR魔改版${Font_color_suffix}"
 	stty erase '^H' && read -p "需要重启VPS后，才能开启BBR/BBR魔改版，是否现在重启 ? [Y/n] :" yn
 	[ -z "${yn}" ] && yn="y"

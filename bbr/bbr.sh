@@ -62,8 +62,8 @@ deb http://deb.debian.org/debian/ stretch-updates main
 deb-src http://deb.debian.org/debian/ stretch-updates main
 deb http://ftp.us.debian.org/debian/ jessie main contrib non-free
 deb-src http://ftp.us.debian.org/debian/ jessie main contrib non-free"|sed '/^#/d;/^\s*$/d'>/etc/apt/sources.list
-	         apt-get update
-                apt-get -y install make gcc-4.9 g++-4.9 g++-4.9-multilib
+                 apt-get update
+                 apt-get -y install make gcc-4.9 g++-4.9 g++-4.9-multilib
 	 fi
  }
 #安装Lotserver内核

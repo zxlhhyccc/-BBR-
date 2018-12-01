@@ -177,6 +177,7 @@ startbbrmod_nanqinlang(){
 	echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
 	echo "net.ipv4.tcp_congestion_control=nanqinlang" >> /etc/sysctl.conf
 	sysctl -p
+    cd .. && rm -rf bbrmod
 	echo -e "${Info}暴力魔改版BBR启动成功！"
 }
 

@@ -137,14 +137,13 @@ startbbrmod(){
 	
 
 	echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
-	echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 	echo "net.ipv4.tcp_congestion_control=tsunami" >> /etc/sysctl.conf
 	sysctl -p
     cd .. && rm -rf bbrmod
 	echo -e "${Info}魔改版BBR启动成功！"
 }
 
-#编译并启用BBR魔改
+#编译并启用暴力BBR魔改
 startbbrmod_nanqinlang(){
 	remove_all
 	if [[ "${release}" == "centos" ]]; then
@@ -176,10 +175,9 @@ startbbrmod_nanqinlang(){
 	
 
 	echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
-	echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 	echo "net.ipv4.tcp_congestion_control=nanqinlang" >> /etc/sysctl.conf
 	sysctl -p
-	echo -e "${Info}魔改版BBR启动成功！"
+	echo -e "${Info}暴力魔改版BBR启动成功！"
 }
 
 #启用Lotserver
@@ -329,7 +327,7 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
  ${Green_font_prefix}7.${Font_color_suffix} 卸载全部加速
  ${Green_font_prefix}8.${Font_color_suffix} 系统配置优化
  ${Green_font_prefix}9.${Font_color_suffix} 安装gcc-4.9
- ${Green_font_prefix}A.${Font_color_suffix} 退出脚本
+ ${Green_font_prefix}a.${Font_color_suffix} 退出脚本
 ————————————————————————————————" && echo
 
 	check_status
@@ -340,7 +338,7 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
 		
 	fi
 echo
-read -p " 请输入数字 [0-9]:" num
+read -p " 请输入数字 [0-9,a]:" num
 case "$num" in
 	0)
 	Update_Shell
@@ -372,7 +370,7 @@ case "$num" in
 	9)
 	install_gcc4.9
 	;;
-	A)
+	a)
 	exit 1
 	;;
 	*)

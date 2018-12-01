@@ -6,6 +6,10 @@
 
 1、修改版本号，如最新版本（4.9.140）：kernel_version="4.9.140"
 
+debian内核版本下载地址：
+
+http://kernel.ubuntu.com/~kernel-ppa/mainline/
+
 2、修改下载最新内核，如版本号（4.9.140）：
 
 wget -N --no-check-certificate http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.140/linux-headers-4.9.140-0409140_4.9.140-0409140.201811231231_all.deb

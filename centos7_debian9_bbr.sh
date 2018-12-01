@@ -140,7 +140,6 @@ startbbrmod(){
 			add-apt-repository ppa:ubuntu-toolchain-r/test -y
 			apt-get update
 		fi
-		apt-get -y install make gcc-4.9
 		mkdir bbrmod && cd bbrmod
 		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/tcp_tsunami.c
 		echo "obj-m:=tcp_tsunami.o" > Makefile
@@ -179,7 +178,6 @@ startbbrmod_nanqinlang(){
 			add-apt-repository ppa:ubuntu-toolchain-r/test -y
 			apt-get update
 		fi
-		apt-get -y install make gcc-4.9
 		mkdir bbrmod && cd bbrmod
 		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/tcp_nanqinlang.c
 		echo "obj-m := tcp_nanqinlang.o" > Makefile

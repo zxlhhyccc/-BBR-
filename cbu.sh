@@ -459,10 +459,8 @@ BBR_grub(){
             fi
             grub2-set-default 0
         fi
-    elif [[ "${release}" == "debian" ]]; then
-        /usr/sbin/update-grub
-    elif [[ "${release}" == "ubuntu" ]]; then
-        update-grub && update-grub2
+    elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
+         /usr/sbin/update-grub
     fi
 }
 

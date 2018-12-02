@@ -48,11 +48,11 @@ installbbr(){
 	       mkdir bbr && cd bbr
 	        wget -N --no-check-certificate -O linux-headers_all.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-headers-4.19.6-041906_4.19.6-041906.201812010432_all.deb
 	       wget -N --no-check-certificate -O linux-headers_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-headers-4.19.6-041906-generic_4.19.6-041906.201812010432_amd64.deb
-               wget -N --no-check-certificate -O linux-modules--generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-modules-4.19.6-041906-generic_4.19.6-041906.201812010432_amd64.deb
+               wget -N --no-check-certificate -O linux-modules-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-modules-4.19.6-041906-generic_4.19.6-041906.201812010432_amd64.deb
 	      wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-modules-4.19.6-041906-generic_4.19.6-041906.201812010432_amd64.deb
                 dpkg -i linux-headers_all.deb
                 dpkg -i linux-headers_amd64.deb
-		dpkg -i linux-modules--generic_amd64.deb
+		dpkg -i linux-modules-generic_amd64.deb
                 dpkg -i linux-image-generic_amd64.deb
 		cd .. && rm -rf bbr
 	fi
@@ -459,8 +459,10 @@ BBR_grub(){
             fi
             grub2-set-default 0
         fi
-    elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
+    elif [[ "${release}" == "debian" ]]; then
         /usr/sbin/update-grub
+    elif [[ "${release}" == "ubuntu" ]]; then
+        update-grub && update-grub2
     fi
 }
 

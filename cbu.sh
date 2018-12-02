@@ -438,6 +438,8 @@ detele_kernel(){
 			done
 			echo -e "内核卸载完毕，继续..."
 		fi
+	fi
+	elif [[ "${release}" == "ubuntu" ]]; then
 		deb-head_total=`dpkg -l | grep linux-headers | awk '{print $2}' | grep -v "${kernel_version}" | wc -l`
 		if [ "${deb-head_total}" > "1" ]; then
 		        echo -e "检测到 ${deb-head_total} 个其余内核，开始卸载..."

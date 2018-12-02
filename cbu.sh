@@ -444,7 +444,7 @@ detele_kernel(){
 			for((integer = 1; integer <= ${deb_total}; integer++)); do
 				deb_del=`dpkg -l|grep linux-headers | awk '{print $2}' | grep -v "${kernel_version}" | head -${integer}`
 				apt-get purge -y ${deb_del}
-				echo -e "卸载 ${deb-head_del} 内核卸载完成，继续..."
+				echo -e "卸载 ${deb_del} 内核卸载完成，继续..."
 			done
 			echo -e "内核卸载完毕，继续..."
 		else

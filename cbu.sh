@@ -437,6 +437,7 @@ detele_kernel(){
 				echo -e "卸载 ${deb_del} 内核卸载完成，继续..."
 			done
 			echo -e "内核卸载完毕，继续..."
+		fi
 		deb-head_total=`dpkg -l | grep linux-headers | awk '{print $2}' | grep -v "${kernel_version}" | wc -l`
 		if [ "${deb-head_total}" > "1" ]; then
 		        echo -e "检测到 ${deb-head_total} 个其余内核，开始卸载..."
@@ -448,7 +449,6 @@ detele_kernel(){
 			echo -e "内核卸载完毕，继续..."
 		else
 			echo -e " 检测到 内核 数量不正确，请检查 !" && exit 1
-		fi
 		fi
 	fi
 }

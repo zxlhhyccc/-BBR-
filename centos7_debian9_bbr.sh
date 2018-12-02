@@ -21,17 +21,17 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 #安装BBR内核
 installbbr(){
 	if [[ "${release}" == "centos" ]]; then
-	kernel_version="4.19.5"
+	kernel_version="4.19.6"
 		#rpm --import http://${github}/bbr/${release}/RPM-GPG-KEY-elrepo.org
 		#yum install -y http://${github}/bbr/${release}/${version}/${bit}/kernel-ml-${kernel_version}.rpm
-                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-4.19.5-1.el7.elrepo.x86_64.rpm
+                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-4.19.6-1.el7.elrepo.x86_64.rpm
 		yum remove -y kernel-headers
 		#yum install -y http://${github}/bbr/${release}/${version}/${bit}/kernel-ml-headers-${kernel_version}.rpm
-                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-headers-4.19.5-1.el7.elrepo.x86_64.rpm 
+                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-headers-4.19.6-1.el7.elrepo.x86_64.rpm 
 		#yum install -y http://${github}/bbr/${release}/${version}/${bit}/kernel-ml-devel-${kernel_version}.rpm
-                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-devel-4.19.5-1.el7.elrepo.x86_64.rpm
-                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-tools-libs-4.19.5-1.el7.elrepo.x86_64.rpm
-                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-tools-4.19.5-1.el7.elrepo.x86_64.rpm
+                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-devel-4.19.6-1.el7.elrepo.x86_64.rpm
+                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-tools-libs-4.19.6-1.el7.elrepo.x86_64.rpm
+                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-tools-4.19.6-1.el7.elrepo.x86_64.rpm
 	elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
 	kernel_version="4.9.142"
 		mkdir bbr && cd bbr

@@ -35,7 +35,7 @@ installbbr(){
 	elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
 	kernel_version="4.9.142"
 		mkdir bbr && cd bbr
-		wget -N --no-check-certificate -O https://github.com/zxlhhyccc/debian9/raw/master/linux-headers-4.9.142_all.deb
+		wget -N --no-check-certificate -O linux-headers_all.deb https://github.com/zxlhhyccc/debian9/raw/master/linux-headers-4.9.142_all.deb
 		wget -N --no-check-certificate -O linux-headers_amd64.deb https://github.com/zxlhhyccc/debian9/raw/master/linux-headers-4.9.142-generic_amd64.deb
 		wget -N --no-check-certificate -O linux-image-generic_amd64.deb https://github.com/zxlhhyccc/debian9/raw/master/linux-image-4.9.142-generic_amd64.deb
 	

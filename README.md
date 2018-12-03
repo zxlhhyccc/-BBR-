@@ -61,7 +61,7 @@ wget -N --no-check-certificate  -O bbr.sh "https://raw.githubusercontent.com/zxl
 7、centos7开启魔改版BBR，请使用centos7_bbr.sh,改脚本最新内核已修改为4.9.5-1，如果需升级内核，请比照上述方法修改
 
 wget -N --no-check-certificate "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7_bbr.sh"  && chmod +x centos7_bbr.sh && ./centos7_bbr.sh
------
+------
 centos7内核版本下载地址：
 
 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/

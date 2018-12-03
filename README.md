@@ -54,7 +54,7 @@ wget -N --no-check-certificate "https://raw.githubusercontent.com/zxlhhyccc/-BBR
 
 C、centos7和debian9合一安装魔改版BBR内核脚本（菜单安装gcc-4.9为debian专用，centos7不需安装）：
 
-wget -N --no-check-certificate  -O bbr.sh "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7_debian9_bbr.sh" && chmod +x bbr.sh && ./bbr.sh
+wget -N --no-check-certificate  -O bbr.sh "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7_debian9_bbr.sh"  && chmod +x bbr.sh && ./bbr.sh
 
 注意：不知道什么原因，debian9在安装内核后重新运行该脚本可能需要等待一会才能下载脚本，为保险起见，安装内核并服务器重启后请先单独运行(./bbr.sh)，或者运行apt upgrade做一次软件包升级，或者随便安装一个软件包，然后就可运行该脚本了。centos7没有此问题。
 

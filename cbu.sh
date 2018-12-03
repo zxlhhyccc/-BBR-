@@ -46,10 +46,10 @@ installbbr(){
 	elif [[ "${release}" == "ubuntu" ]]; then
 	kernel_version="4.19.6"
 	       mkdir bbr && cd bbr
-	        wget -N --no-check-certificate -O linux-headers_all.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-headers-4.19.6-041906_4.19.6-041906.201812010432_all.deb
-	       wget -N --no-check-certificate -O linux-headers_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-headers-4.19.6-041906-generic_4.19.6-041906.201812010432_amd64.deb
-               wget -N --no-check-certificate -O linux-modules-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-modules-4.19.6-041906-generic_4.19.6-041906.201812010432_amd64.deb
-	      wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-image-unsigned-4.19.6-041906-generic_4.19.6-041906.201812010432_amd64.deb
+	        wget -N --no-check-certificate -O linux-headers_all.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6--GCC8-BUG/linux-headers-4.19.6-041906_4.19.6-041906.201812010432_all.deb
+	       wget -N --no-check-certificate -O linux-headers_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6--GCC8-BUG/linux-headers-4.19.6-041906-generic_4.19.6-041906.201812010432_amd64.deb
+               wget -N --no-check-certificate -O linux-modules-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6--GCC8-BUG/linux-modules-4.19.6-041906-generic_4.19.6-041906.201812010432_amd64.deb
+	      wget -N --no-check-certificate -O http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6--GCC8-BUG/linux-modules-4.19.6-041906-generic_4.19.6-041906.201812010432_amd64.deb
                 dpkg -i linux-headers_all.deb
                 dpkg -i linux-headers_amd64.deb
 		dpkg -i linux-modules-generic_amd64.deb

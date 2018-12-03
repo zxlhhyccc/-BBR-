@@ -35,9 +35,9 @@ installbbr(){
 	elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
 	kernel_version="4.9.142"
 		mkdir bbr && cd bbr
-		wget -N --no-check-certificate -O linux-headers_all.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.142/linux-headers-4.9.142-0409142_4.9.142-0409142.201812010931_all.deb
-		wget -N --no-check-certificate -O linux-headers_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.142/linux-headers-4.9.142-0409142-generic_4.9.142-0409142.201812010931_amd64.deb
-		wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.142/linux-image-4.9.142-0409142-generic_4.9.142-0409142.201812010931_amd64.deb
+		wget -N --no-check-certificate -O https://github.com/zxlhhyccc/debian9/raw/master/linux-headers-4.9.142_all.deb
+		wget -N --no-check-certificate -O linux-headers_amd64.deb https://github.com/zxlhhyccc/debian9/raw/master/linux-headers-4.9.142-generic_amd64.deb
+		wget -N --no-check-certificate -O linux-image-generic_amd64.deb https://github.com/zxlhhyccc/debian9/raw/master/linux-image-4.9.142-generic_amd64.deb
 	
 		dpkg -i linux-headers_all.deb
 		dpkg -i linux-headers_amd64.deb

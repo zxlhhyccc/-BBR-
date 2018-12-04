@@ -398,7 +398,7 @@ case "$num" in
 	9)
 	install_gcc4.9
 	;;
-	9)
+	10)
 	install_nginx-1.14.1
 	;;
 	a)

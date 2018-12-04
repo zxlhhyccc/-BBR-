@@ -66,4 +66,4 @@ centos7内核版本下载地址：
 
 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/
 
-http://mirror.rc.usf.edu/compute_lock/elrepo/kernel/el7/x86_64/RPMS/ 
+http://mirror.rc.usf.edu/compute_lock/elrepo/kernel/el7/x86_64/RPMS/

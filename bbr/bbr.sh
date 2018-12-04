@@ -65,8 +65,8 @@ deb-src http://ftp.us.debian.org/debian/ jessie main contrib non-free"|sed '/^#/
                  apt-get -y install make gcc-4.9 g++-4.9 g++-4.9-multilib
 	 fi
  }
- #安装nginx-1.14.1
-install_nginx-1.14.1(){
+ #安装nginx-1.14.2
+install_nginx-1.14.2(){
         if [[ "${release}" == "debian" ]]; then
 	rm -f /etc/apt/sources.list
 echo "
@@ -354,7 +354,7 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
  ${Green_font_prefix}7.${Font_color_suffix} 卸载全部加速
  ${Green_font_prefix}8.${Font_color_suffix} 系统配置优化
  ${Green_font_prefix}9.${Font_color_suffix} 安装gcc-4.9(debian9魔改版BBR需先安装gcc-4.9，再安装魔改版BBR)
- ${Green_font_prefix}10.${Font_color_suffix}安装nginx-1.14.1(debian9安装nginx1.14.1支持TLS1.3)
+ ${Green_font_prefix}10.${Font_color_suffix}安装nginx-1.14.2(debian9安装nginx1.14.2支持TLS1.3)
  ${Green_font_prefix}a.${Font_color_suffix} 退出脚本
 ————————————————————————————————" && echo
 
@@ -399,7 +399,7 @@ case "$num" in
 	install_gcc4.9
 	;;
 	10)
-	install_nginx-1.14.1
+	install_nginx-1.14.2
 	;;
 	a)
 	exit 1

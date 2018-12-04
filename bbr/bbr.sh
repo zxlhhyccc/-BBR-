@@ -65,6 +65,25 @@ deb-src http://ftp.us.debian.org/debian/ jessie main contrib non-free"|sed '/^#/
                  apt-get -y install make gcc-4.9 g++-4.9 g++-4.9-multilib
 	 fi
  }
+ #安装nginx-1.14.1
+install_nginx-1.14.1(){
+        if [[ "${release}" == "debian" ]]; then
+	rm -f /etc/apt/sources.list
+echo "
+deb http://deb.debian.org/debian/ stretch main
+deb-src http://deb.debian.org/debian/ stretch main
+deb http://security.debian.org/ stretch/updates main
+deb-src http://security.debian.org/ stretch/updates main
+deb http://deb.debian.org/debian/ stretch-updates main
+deb-src http://deb.debian.org/debian/ stretch-updates main
+deb http://nginx.org/packages/debian/ stretch nginx
+deb-src http://nginx.org/packages/debian/ stretch nginx "|sed '/^#/d;/^\s*$/d'>/etc/apt/sources.list
+                 wget http://nginx.org/keys/nginx_signing.key
+		 apt-key add nginx_signing.key
+		 apt-get update
+                 apt-get -y install nginx
+	 fi
+ }
 #安装Lotserver内核
 installlot(){
 	if [[ "${release}" == "centos" ]]; then
@@ -335,6 +354,7 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
  ${Green_font_prefix}7.${Font_color_suffix} 卸载全部加速
  ${Green_font_prefix}8.${Font_color_suffix} 系统配置优化
  ${Green_font_prefix}9.${Font_color_suffix} 安装gcc-4.9(debian9魔改版BBR需先安装gcc-4.9，再安装魔改版BBR)
+ ${Green_font_prefix}10.${Font_color_suffix} 安装nginx1.14.1(debian9安装nginx1.14.1支持TLS1.3)
  ${Green_font_prefix}a.${Font_color_suffix} 退出脚本
 ————————————————————————————————" && echo
 
@@ -346,7 +366,7 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
 		
 	fi
 echo
-read -p " 请输入数字 [0-9,a]:" num
+read -p " 请输入数字 [0-10,a]:" num
 case "$num" in
 	0)
 	Update_Shell
@@ -378,12 +398,15 @@ case "$num" in
 	9)
 	install_gcc4.9
 	;;
+	9)
+	install_nginx1.14.1
+	;;
 	a)
 	exit 1
 	;;
 	*)
 	clear
-	echo -e "${Error}:请输入正确数字 [0-8]"
+	echo -e "${Error}:请输入正确数字 [0-10,a]"
 	sleep 5s
 	start_menu
 	;;

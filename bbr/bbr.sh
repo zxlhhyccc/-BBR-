@@ -20,7 +20,7 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 
 #安装BBR内核
 installbbr(){
-	kernel_version="4.9.141"
+	kernel_version="4.9.142"
 	if [[ "${release}" == "centos" ]]; then
 		rpm --import http://${github}/bbr/${release}/RPM-GPG-KEY-elrepo.org
 		yum install -y http://${github}/bbr/${release}/${version}/${bit}/kernel-ml-${kernel_version}.rpm
@@ -29,13 +29,12 @@ installbbr(){
 		yum install -y http://${github}/bbr/${release}/${version}/${bit}/kernel-ml-devel-${kernel_version}.rpm
 	elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
 		mkdir bbr && cd bbr
-		wget -N --no-check-certificate http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.141/linux-headers-4.9.141-0409141_4.9.141-0409141.201811291439_all.deb
-		wget -N --no-check-certificate http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.141/linux-headers-4.9.141-0409141-generic_4.9.141-0409141.201811291439_amd64.deb
-		wget -N --no-check-certificate http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.141/linux-image-4.9.141-0409141-generic_4.9.141-0409141.201811291439_amd64.deb
-	
-		dpkg -i linux-headers-4.9.141-0409141_4.9.141-0409141.201811291439_all.deb
-		dpkg -i linux-headers-4.9.141-0409141-generic_4.9.141-0409141.201811291439_amd64.deb
-		dpkg -i linux-image-4.9.141-0409141-generic_4.9.141-0409141.201811291439_amd64.deb
+		wget -N --no-check-certificate linux-headers_all.deb https://github.com/zxlhhyccc/debian9/raw/master/linux-headers-4.9.142_all.deb
+		wget -N --no-check-certificate linux-headers_amd64.deb https://github.com/zxlhhyccc/debian9/raw/master/linux-headers-4.9.142-generic_amd64.deb
+		wget -N --no-check-certificate linux-image-generic_amd64.deb https://github.com/zxlhhyccc/debian9/raw/master/linux-image-4.9.142-generic_amd64.deb	
+		dpkg -i linux-headers_all.deb
+		dpkg -i linux-headers_amd64.deb
+		dpkg -i linux-image-generic_amd64.deb
 		cd .. && rm -rf bbr
 	fi
 	detele_kernel

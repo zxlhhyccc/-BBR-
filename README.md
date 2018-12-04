@@ -48,7 +48,7 @@ A、不带gcc-4.9菜单需按第5步先安装gcc-4.9的脚本：
 
 wget -N --no-check-certificate "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/bbr.sh"  && chmod +x bbr.sh && ./bbr.sh 
 
-B、带gcc-4.9安装菜单，在安装魔改版内核后，先执行菜单安装gcc-4.9，然后再安装魔改版BBR的一键脚本：
+B、带gcc-4.9和nginx1.14.1安装菜单，在安装魔改版内核后，先执行菜单安装gcc-4.9，然后再安装魔改版BBR的一键脚本：
 
 wget -N --no-check-certificate "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/bbr/bbr.sh" && chmod +x bbr.sh && ./bbr.sh
 

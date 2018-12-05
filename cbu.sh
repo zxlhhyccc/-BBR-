@@ -46,10 +46,10 @@ installbbr(){
 	elif [[ "${release}" == "ubuntu" ]]; then
 	kernel_version="4.19.6"
 	       mkdir bbr && cd bbr
-	        wget -N --no-check-certificate -O linux-headers_all.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-headers-4.19.6-041906_4.19.6-041906.201812030857_all.deb
+	       wget -N --no-check-certificate -O linux-headers_all.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-headers-4.19.6-041906_4.19.6-041906.201812030857_all.deb
 	       wget -N --no-check-certificate -O linux-headers_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-headers-4.19.6-041906-generic_4.19.6-041906.201812030857_amd64.deb
                wget -N --no-check-certificate -O linux-modules-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-modules-4.19.6-041906-generic_4.19.6-041906.201812030857_amd64.deb
-	      wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-image-unsigned-4.19.6-041906-generic_4.19.6-041906.201812030857_amd64.deb
+	       wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-image-unsigned-4.19.6-041906-generic_4.19.6-041906.201812030857_amd64.deb
                 dpkg -i linux-headers_all.deb
                 dpkg -i linux-headers_amd64.deb
 		dpkg -i linux-modules-generic_amd64.deb
@@ -79,7 +79,7 @@ deb-src http://security.debian.org/ stretch/updates main
 deb http://deb.debian.org/debian/ stretch-updates main
 deb-src http://deb.debian.org/debian/ stretch-updates main
 deb http://ftp.us.debian.org/debian/ jessie main contrib non-free
-deb-src http://ftp.us.debian.org/debian/ jessie main contrib non-free"|sed '/^#/d;/^\s*$/d'>/etc/apt/sources.list
+deb-src http://ftp.us.debian.org/debian/ jessie main contrib non-free "|sed '/^#/d;/^\s*$/d'>/etc/apt/sources.list
                  apt-get update
                  apt-get -y install make gcc-4.9 g++-4.9 g++-4.9-multilib
         elif [[ "${release}" == "ubuntu" ]]; then
@@ -144,9 +144,91 @@ deb-src http://security.ubuntu.com/ubuntu bionic-security multiverse
 # deb-src http://archive.canonical.com/ubuntu bionic partner
 
 deb http://dk.archive.ubuntu.com/ubuntu/ xenial main
-deb http://dk.archive.ubuntu.com/ubuntu/ xenial universe"|sed '/^#/d;/^\s*$/d'>/etc/apt/sources.list
+deb http://dk.archive.ubuntu.com/ubuntu/ xenial universe "|sed '/^#/d;/^\s*$/d'>/etc/apt/sources.list
                  apt-get update
                  apt-get -y install make gcc-4.9 g++-4.9 g++-4.9-multilib
+	 fi
+ }
+ 
+#安装nginx-1.14
+install_nginx-1.14(){
+        if [[ "${release}" == "debian" ]]; then
+	rm -f /etc/apt/sources.list
+echo "
+deb http://deb.debian.org/debian/ stretch main
+deb-src http://deb.debian.org/debian/ stretch main
+deb http://security.debian.org/ stretch/updates main
+deb-src http://security.debian.org/ stretch/updates main
+deb http://deb.debian.org/debian/ stretch-updates main
+deb-src http://deb.debian.org/debian/ stretch-updates main
+deb http://nginx.org/packages/debian/ stretch nginx
+deb-src http://nginx.org/packages/debian/ stretch nginx "|sed '/^#/d;/^\s*$/d'>/etc/apt/sources.list
+                 wget http://nginx.org/keys/nginx_signing.key
+		 apt-key add nginx_signing.key
+		 apt-get update
+                 apt-get -y install nginx
+        elif [[ "${release}" == "ubuntu" ]]; then
+	rm -f /etc/apt/sources.list
+echo "
+## Note, this file is written by cloud-init on first boot of an instance
+## modifications made here will not survive a re-bundle.
+## if you wish to make changes you can:
+## a.) add 'apt_preserve_sources_list: true' to /etc/cloud/cloud.cfg
+##     or do the same in user-data
+## b.) add sources in /etc/apt/sources.list.d
+## c.) make changes to template file /etc/cloud/templates/sources.list.tmpl
+
+# See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to
+# newer versions of the distribution.
+deb http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic main restricted
+deb-src http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic main restricted
+
+## Major bug fix updates produced after the final release of the
+## distribution.
+deb http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-updates main restricted
+deb-src http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-updates main restricted
+
+## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu
+## team. Also, please note that software in universe WILL NOT receive any
+## review or updates from the Ubuntu security team.
+deb http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic universe
+deb-src http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic universe
+deb http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-updates universe
+deb-src http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-updates universe
+
+## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu 
+## team, and may not be under a free licence. Please satisfy yourself as to 
+## your rights to use the software. Also, please note that software in 
+## multiverse WILL NOT receive any review or updates from the Ubuntu
+## security team.
+deb http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic multiverse
+deb-src http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic multiverse
+deb http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-updates multiverse
+deb-src http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-updates multiverse
+
+## N.B. software from this repository may not have been tested as
+## extensively as that contained in the main release, although it includes
+## newer versions of some applications which may provide useful features.
+## Also, please note that software in backports WILL NOT receive any review
+## or updates from the Ubuntu security team.
+deb http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
+
+deb http://security.ubuntu.com/ubuntu bionic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu bionic-security main restricted
+deb http://security.ubuntu.com/ubuntu bionic-security universe
+deb-src http://security.ubuntu.com/ubuntu bionic-security universe
+deb http://security.ubuntu.com/ubuntu bionic-security multiverse
+deb-src http://security.ubuntu.com/ubuntu bionic-security multiverse
+
+## Uncomment the following two lines to add software from Canonical's
+## 'partner' repository.
+## This software is not part of Ubuntu, but is offered by Canonical and the
+## respective vendors as a service to Ubuntu users.
+# deb http://archive.canonical.com/ubuntu bionic partner
+# deb-src http://archive.canonical.com/ubuntu bionic partner "|sed '/^#/d;/^\s*$/d'>/etc/apt/sources.list
+		 apt-get update
+                 apt-get -y install nginx
 	 fi
  }
  
@@ -461,19 +543,20 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
  ${Green_font_prefix}0.${Font_color_suffix} 升级脚本(请不要升级脚本,否则需重新配置)
 ————————————内核管理————————————
  ${Green_font_prefix}1.${Font_color_suffix} 安装 BBR/BBR魔改版内核
- ${Green_font_prefix}2.${Font_color_suffix} 安装 Lotserver(锐速)内核
+ ${Green_font_prefix}2.${Font_color_suffix} 安装 Lotserver(锐速)内核(仅支持低版本内核)
 ————————————加速管理————————————
  ${Green_font_prefix}3.${Font_color_suffix} 使用BBR加速
  ${Green_font_prefix}4.${Font_color_suffix} 使用BBR魔改版加速(centos7/debian9使用)
  ${Green_font_prefix}5.${Font_color_suffix} 使用暴力BBR魔改版加速(不支持部分系统，centos7/debian9使用)
- ${Green_font_prefix}6.${Font_color_suffix} 使用Lotserver(锐速)加速
+ ${Green_font_prefix}6.${Font_color_suffix} 使用Lotserver(锐速)加速(仅支持低版本内核)
  ${Green_font_prefix}7.${Font_color_suffix} 使用BBR魔改版加速(ubuntu18.04使用)
  ${Green_font_prefix}8.${Font_color_suffix} 使用暴力BBR魔改版加速(不支持部分系统，ubuntu18.04使用)
 ————————————杂项管理————————————
- ${Green_font_prefix}9.${Font_color_suffix} 卸载全部加速
+ ${Green_font_prefix}9.${Font_color_suffix}  卸载全部加速
  ${Green_font_prefix}10.${Font_color_suffix} 系统配置优化
  ${Green_font_prefix}11.${Font_color_suffix} 安装gcc-4.9(debian9魔改版BBR需gcc-4.9编译)
- ${Green_font_prefix}a.${Font_color_suffix} 退出脚本
+ ${Green_font_prefix}12.${Font_color_suffix} 安装nginx-1.14(debian9/ubuntu18.04安装nginx1.14支持TLSv1.3)
+ ${Green_font_prefix}a.${Font_color_suffix}  退出脚本
 ————————————————————————————————" && echo
 
 	check_status
@@ -484,7 +567,7 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
 		
 	fi
 echo
-read -p " 请输入数字 [0-9,a]:" num
+read -p " 请输入数字 [0-12,a]:" num
 case "$num" in
 	0)
 	Update_Shell
@@ -522,12 +605,15 @@ case "$num" in
 	11)
 	install_gcc4.9
 	;;
+	12)
+	install_nginx-1.14
+	;;
 	a)
 	exit 1
 	;;
 	*)
 	clear
-	echo -e "${Error}:请输入正确数字 [0-10,a]"
+	echo -e "${Error}:请输入正确数字 [0-12,a]"
 	sleep 5s
 	start_menu
 	;;

@@ -657,7 +657,6 @@ detele_kernel(){
 				deb_del=`dpkg -l|grep linux-headers | awk '{print $2}' | grep -v "${kernel_version}" | head -${integer}`
 				apt-get purge -y ${deb_del}
 				echo -e "卸载 ${deb_del} 内核卸载完成，继续..."
-				sudo apt autoremove grub-pc-bin
 			done
 			echo -e "内核卸载完毕，继续..."
 		else

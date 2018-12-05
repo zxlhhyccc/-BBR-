@@ -554,7 +554,7 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
 ————————————杂项管理————————————
  ${Green_font_prefix}9.${Font_color_suffix}  卸载全部加速
  ${Green_font_prefix}10.${Font_color_suffix} 系统配置优化
- ${Green_font_prefix}11.${Font_color_suffix} 安装gcc-4.9(debian9魔改版BBR需gcc-4.9编译)
+ ${Green_font_prefix}11.${Font_color_suffix} 安装gcc-4.9(debian9/ubuntu18.04魔改版BBR需gcc-4.9编译)
  ${Green_font_prefix}12.${Font_color_suffix} 安装nginx-1.14(debian9/ubuntu18.04安装nginx1.14支持TLSv1.3)
  ${Green_font_prefix}a.${Font_color_suffix}  退出脚本
 ————————————————————————————————" && echo

@@ -82,6 +82,71 @@ deb http://ftp.us.debian.org/debian/ jessie main contrib non-free
 deb-src http://ftp.us.debian.org/debian/ jessie main contrib non-free"|sed '/^#/d;/^\s*$/d'>/etc/apt/sources.list
                  apt-get update
                  apt-get -y install make gcc-4.9 g++-4.9 g++-4.9-multilib
+        elif [[ "${release}" == "ubuntu" ]]; then
+	rm -f /etc/apt/sources.list
+echo "
+## Note, this file is written by cloud-init on first boot of an instance
+## modifications made here will not survive a re-bundle.
+## if you wish to make changes you can:
+## a.) add 'apt_preserve_sources_list: true' to /etc/cloud/cloud.cfg
+##     or do the same in user-data
+## b.) add sources in /etc/apt/sources.list.d
+## c.) make changes to template file /etc/cloud/templates/sources.list.tmpl
+
+# See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to
+# newer versions of the distribution.
+deb http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic main restricted
+deb-src http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic main restricted
+
+## Major bug fix updates produced after the final release of the
+## distribution.
+deb http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-updates main restricted
+deb-src http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-updates main restricted
+
+## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu
+## team. Also, please note that software in universe WILL NOT receive any
+## review or updates from the Ubuntu security team.
+deb http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic universe
+deb-src http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic universe
+deb http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-updates universe
+deb-src http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-updates universe
+
+## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu 
+## team, and may not be under a free licence. Please satisfy yourself as to 
+## your rights to use the software. Also, please note that software in 
+## multiverse WILL NOT receive any review or updates from the Ubuntu
+## security team.
+deb http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic multiverse
+deb-src http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic multiverse
+deb http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-updates multiverse
+deb-src http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-updates multiverse
+
+## N.B. software from this repository may not have been tested as
+## extensively as that contained in the main release, although it includes
+## newer versions of some applications which may provide useful features.
+## Also, please note that software in backports WILL NOT receive any review
+## or updates from the Ubuntu security team.
+deb http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://asia-east1.gce.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
+
+deb http://security.ubuntu.com/ubuntu bionic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu bionic-security main restricted
+deb http://security.ubuntu.com/ubuntu bionic-security universe
+deb-src http://security.ubuntu.com/ubuntu bionic-security universe
+deb http://security.ubuntu.com/ubuntu bionic-security multiverse
+deb-src http://security.ubuntu.com/ubuntu bionic-security multiverse
+
+## Uncomment the following two lines to add software from Canonical's
+## 'partner' repository.
+## This software is not part of Ubuntu, but is offered by Canonical and the
+## respective vendors as a service to Ubuntu users.
+# deb http://archive.canonical.com/ubuntu bionic partner
+# deb-src http://archive.canonical.com/ubuntu bionic partner
+
+deb http://dk.archive.ubuntu.com/ubuntu/ xenial main
+deb http://dk.archive.ubuntu.com/ubuntu/ xenial universe"|sed '/^#/d;/^\s*$/d'>/etc/apt/sources.list
+                 apt-get update
+                 apt-get -y install make gcc-4.9 g++-4.9 g++-4.9-multilib
 	 fi
  }
  
@@ -132,7 +197,7 @@ startbbr(){
 	echo -e "${Info}BBR启动成功！"
 }
 
-#编译并启用BBR魔改
+#编译并启用BBR魔改(cent0s7/debian9)
 startbbrmod(){
 	remove_all
 	if [[ "${release}" == "centos" ]]; then
@@ -169,8 +234,34 @@ startbbrmod(){
     cd .. && rm -rf bbrmod
 	echo -e "${Info}魔改版BBR启动成功！"
 }
+#编译并启用BBR魔改(ubuntu18.04)
+startbbrmod_ubuntu18.04(){
+	remove_all
+	apt-get update
+	if [[ "${release}" == "ubuntu" && "${version}" = "14" ]]; then
+		apt-get -y install build-essential
+		apt-get -y install software-properties-common
+		add-apt-repository ppa:ubuntu-toolchain-r/test -y
+		apt-get update
+		fi
+		mkdir bbrmod && cd bbrmod
+		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/TCP_BBR/master/v4.19_rc/tcp_tsunami.c
+		echo "obj-m:=tcp_tsunami.o" > Makefile
+		make -C /lib/modules/$(uname -r)/build M=`pwd` modules CC=/usr/bin/gcc-4.9
+		install tcp_tsunami.ko /lib/modules/$(uname -r)/kernel
+		cp -rf ./tcp_tsunami.ko /lib/modules/$(uname -r)/kernel/net/ipv4
+		depmod -a
+	fi
+	
 
-#编译并启用BBR魔改
+	echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+	echo "net.ipv4.tcp_congestion_control=tsunami" >> /etc/sysctl.conf
+	sysctl -p
+    cd .. && rm -rf bbrmod
+	echo -e "${Info}魔改版BBR启动成功！"
+}
+
+#编译并启用BBR魔改(cent0s7/debian9)
 startbbrmod_nanqinlang(){
 	remove_all
 	if [[ "${release}" == "centos" ]]; then
@@ -184,6 +275,32 @@ startbbrmod_nanqinlang(){
 		insmod tcp_nanqinlang.ko
 		depmod -a
 	else
+		apt-get update
+		if [[ "${release}" == "ubuntu" && "${version}" = "14" ]]; then
+			apt-get -y install build-essential
+			apt-get -y install software-properties-common
+			add-apt-repository ppa:ubuntu-toolchain-r/test -y
+			apt-get update
+		fi
+		mkdir bbrmod && cd bbrmod
+		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/TCP_BBR/master/v4.19_rc/tcp_nanqinlang.c
+		echo "obj-m := tcp_nanqinlang.o" > Makefile
+		make -C /lib/modules/$(uname -r)/build M=`pwd` modules CC=/usr/bin/gcc-4.9
+		install tcp_nanqinlang.ko /lib/modules/$(uname -r)/kernel
+		cp -rf ./tcp_nanqinlang.ko /lib/modules/$(uname -r)/kernel/net/ipv4
+		depmod -a
+	fi
+	
+
+	echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+	echo "net.ipv4.tcp_congestion_control=nanqinlang" >> /etc/sysctl.conf
+	sysctl -p
+	echo -e "${Info}魔改版BBR启动成功！"
+}
+#编译并启用BBR魔改(ubuntu18.04)
+startbbrmod_nanqinlang_ubuntu18.04(){
+	remove_all
+	if [[ "${release}" == "ubuntu" ]]; then
 		apt-get update
 		if [[ "${release}" == "ubuntu" && "${version}" = "14" ]]; then
 			apt-get -y install build-essential
@@ -347,13 +464,15 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
  ${Green_font_prefix}2.${Font_color_suffix} 安装 Lotserver(锐速)内核
 ————————————加速管理————————————
  ${Green_font_prefix}3.${Font_color_suffix} 使用BBR加速
- ${Green_font_prefix}4.${Font_color_suffix} 使用BBR魔改版加速
- ${Green_font_prefix}5.${Font_color_suffix} 使用暴力BBR魔改版加速(不支持部分系统)
+ ${Green_font_prefix}4.${Font_color_suffix} 使用BBR魔改版加速(centos7/debian9使用)
+ ${Green_font_prefix}5.${Font_color_suffix} 使用暴力BBR魔改版加速(不支持部分系统，centos7/debian9使用)
  ${Green_font_prefix}6.${Font_color_suffix} 使用Lotserver(锐速)加速
+ ${Green_font_prefix}7.${Font_color_suffix} 使用BBR魔改版加速(ubuntu18.04使用)
+ ${Green_font_prefix}8.${Font_color_suffix} 使用暴力BBR魔改版加速(不支持部分系统，ubuntu18.04使用)
 ————————————杂项管理————————————
- ${Green_font_prefix}7.${Font_color_suffix} 卸载全部加速
- ${Green_font_prefix}8.${Font_color_suffix} 系统配置优化
- ${Green_font_prefix}9.${Font_color_suffix} 安装gcc-4.9(debian9魔改版BBR需gcc-4.9编译)
+ ${Green_font_prefix}9.${Font_color_suffix} 卸载全部加速
+ ${Green_font_prefix}10.${Font_color_suffix} 系统配置优化
+ ${Green_font_prefix}11.${Font_color_suffix} 安装gcc-4.9(debian9魔改版BBR需gcc-4.9编译)
  ${Green_font_prefix}a.${Font_color_suffix} 退出脚本
 ————————————————————————————————" && echo
 
@@ -389,12 +508,18 @@ case "$num" in
 	startlotserver
 	;;
 	7)
-	remove_all
+	startbbrmod_ubuntu18.04
 	;;
 	8)
-	optimizing_system
+	startbbrmod_nanqinlang_ubuntu18.04
 	;;
 	9)
+	remove_all
+	;;
+	10)
+	optimizing_system
+	;;
+	11)
 	install_gcc4.9
 	;;
 	a)
@@ -402,7 +527,7 @@ case "$num" in
 	;;
 	*)
 	clear
-	echo -e "${Error}:请输入正确数字 [0-9]"
+	echo -e "${Error}:请输入正确数字 [0-10,a]"
 	sleep 5s
 	start_menu
 	;;

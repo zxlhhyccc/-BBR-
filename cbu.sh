@@ -319,6 +319,7 @@ startbbrmod(){
 #编译并启用BBR魔改(ubuntu18.04)
 startbbrmod_ubuntu18.04(){
 	remove_all
+	if [[ "${release}" == "ubuntu" ]]; then
 	apt-get update
 	if [[ "${release}" == "ubuntu" && "${version}" = "14" ]]; then
 		apt-get -y install build-essential

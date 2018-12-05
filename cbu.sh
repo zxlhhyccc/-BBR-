@@ -50,10 +50,10 @@ installbbr(){
 	       wget -N --no-check-certificate -O linux-headers_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-headers-4.19.6-041906-generic_4.19.6-041906.201812030857_amd64.deb
                wget -N --no-check-certificate -O linux-modules-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-modules-4.19.6-041906-generic_4.19.6-041906.201812030857_amd64.deb
 	       wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-image-unsigned-4.19.6-041906-generic_4.19.6-041906.201812030857_amd64.deb
-                dpkg -i linux-headers_all.deb
-                dpkg -i linux-headers_amd64.deb
-		dpkg -i linux-modules-generic_amd64.deb
-                dpkg -i linux-image-generic_amd64.deb
+               dpkg -i linux-headers_all.deb
+               dpkg -i linux-headers_amd64.deb
+	       dpkg -i linux-modules-generic_amd64.deb
+               dpkg -i linux-image-generic_amd64.deb
 		cd .. && rm -rf bbr
 	fi
 	detele_kernel

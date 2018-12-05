@@ -301,7 +301,7 @@ startbbrmod(){
 			apt-get update
 		fi
 		mkdir bbrmod && cd bbrmod
-		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/TCP_BBR/master/v4.19_rc/tcp_tsunami.c
+		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/tcp_tsunami.c
 		echo "obj-m:=tcp_tsunami.o" > Makefile
 		make -C /lib/modules/$(uname -r)/build M=`pwd` modules CC=/usr/bin/gcc-4.9
 		install tcp_tsunami.ko /lib/modules/$(uname -r)/kernel
@@ -366,7 +366,7 @@ startbbrmod_nanqinlang(){
 			apt-get update
 		fi
 		mkdir bbrmod && cd bbrmod
-		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/TCP_BBR/master/v4.19_rc/tcp_nanqinlang.c
+		wget -N --no-check-certificate https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/tcp_tsunami.c
 		echo "obj-m := tcp_nanqinlang.o" > Makefile
 		make -C /lib/modules/$(uname -r)/build M=`pwd` modules CC=/usr/bin/gcc-4.9
 		install tcp_nanqinlang.ko /lib/modules/$(uname -r)/kernel

@@ -564,6 +564,7 @@ BBR_grub(){
         fi
     elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
          /usr/sbin/update-grub
+	 apt-get autoremove grub-pc-bin
     fi
 }
 

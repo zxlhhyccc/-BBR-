@@ -44,7 +44,7 @@ installbbr(){
 		dpkg -i linux-image-generic_amd64.deb
 		cd .. && rm -rf bbr
 	elif [[ "${release}" == "ubuntu" ]]; then
-	kernel_version="4.19.6"
+	kernel_version="4.19.7"
 	       mkdir bbr && cd bbr
 	       wget -N --no-check-certificate -O linux-headers_all.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/ubuntu18.04/linux-headers-4.19.7_all.deb
 	       wget -N --no-check-certificate -O linux-headers_amd64.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/ubuntu18.04/linux-headers-4.19.7-generic_amd64.deb

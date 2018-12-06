@@ -683,6 +683,7 @@ BBR_grub(){
         fi
     elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
          /usr/sbin/update-grub
+	 apt remove -y grub-pc-bin
     fi
 }
 

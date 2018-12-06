@@ -44,12 +44,12 @@ installbbr(){
 		dpkg -i linux-image-generic_amd64.deb
 		cd .. && rm -rf bbr
 	elif [[ "${release}" == "ubuntu" ]]; then
-	kernel_version="4.19.7"
+	kernel_version="4.19.6"
 	       mkdir bbr && cd bbr
-	       wget -N --no-check-certificate -O linux-headers_all.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/ubuntu18.04/linux-headers-4.19.7_all.deb
-	       wget -N --no-check-certificate -O linux-headers_amd64.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/ubuntu18.04/linux-headers-4.19.7-generic_amd64.deb
-	       wget -N --no-check-certificate -O linux-modules-generic_amd64.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/ubuntu18.04/linux-modules-4.19.7-generic_amd64.deb
-	       wget -N --no-check-certificate -O linux-image-generic_amd64.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/ubuntu18.04/linux-image-unsigned-4.19.7-generic_amd64.deb
+	       wget -N --no-check-certificate -O linux-headers_all.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-headers-4.19.6-041906_4.19.6-041906.201812030857_all.deb
+	       wget -N --no-check-certificate -O linux-headers_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-headers-4.19.6-041906-generic_4.19.6-041906.201812030857_amd64.deb
+	       wget -N --no-check-certificate -O linux-modules-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-modules-4.19.6-041906-generic_4.19.6-041906.201812030857_amd64.deb
+	       wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-modules-4.19.6-041906-generic_4.19.6-041906.201812030857_amd64.deb
                dpkg -i linux-headers_all.deb
                dpkg -i linux-headers_amd64.deb
                dpkg -i linux-modules-generic_amd64.deb
@@ -638,7 +638,21 @@ detele_kernel(){
 		else
 			echo -e " 检测到 内核 数量不正确，请检查 !" && exit 1
 		fi
-	elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
+	elif [[ "${release}" == "debian" ]]; then
+		deb_total=`dpkg -l | grep linux-image | awk '{print $2}' | grep -v "${kernel_version}" | wc -l`
+		if [ "${deb_total}" > "1" ]; then
+			echo -e "检测到 ${deb_total} 个其余内核，开始卸载..."
+			for((integer = 1; integer <= ${deb_total}; integer++)); do
+				deb_del=`dpkg -l|grep linux-image | awk '{print $2}' | grep -v "${kernel_version}" | head -${integer}`
+				echo -e "开始卸载 ${deb_del} 内核..."
+				apt-get purge -y ${deb_del}
+				echo -e "卸载 ${deb_del} 内核卸载完成，继续..."
+			done
+			echo -e "内核卸载完毕，继续..."
+		else
+			echo -e " 检测到 内核 数量不正确，请检查 !" && exit 1
+		fi
+	elif [[ "${release}" == "ubuntu" ]]; then
 		deb_total=`dpkg -l | grep linux-image | awk '{print $2}' | grep -v "${kernel_version}" | wc -l`
 		if [ "${deb_total}" > "1" ]; then
 			echo -e "检测到 ${deb_total} 个其余内核，开始卸载..."
@@ -683,6 +697,7 @@ BBR_grub(){
         fi
     elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
          /usr/sbin/update-grub
+	 apt-get autoremove grub-pc-bin
     fi
 }
 

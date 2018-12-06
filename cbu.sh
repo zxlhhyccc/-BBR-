@@ -24,32 +24,32 @@ installbbr(){
 	kernel_version="4.19.6"
 		#rpm --import http://${github}/bbr/${release}/RPM-GPG-KEY-elrepo.org
 		#yum install -y http://${github}/bbr/${release}/${version}/${bit}/kernel-ml-${kernel_version}.rpm
-                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-4.19.6-1.el7.elrepo.x86_64.rpm
+                yum install -y https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/centos7/kernel-ml-4.19.7-1.el7.elrepo.x86_64.rpm
 		yum remove -y kernel-headers
 		#yum install -y http://${github}/bbr/${release}/${version}/${bit}/kernel-ml-headers-${kernel_version}.rpm
-                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-headers-4.19.6-1.el7.elrepo.x86_64.rpm 
+                yum install -y https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/centos7/kernel-ml-headers-4.19.7-1.el7.elrepo.x86_64.rpm 
 		#yum install -y http://${github}/bbr/${release}/${version}/${bit}/kernel-ml-devel-${kernel_version}.rpm
-                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-devel-4.19.6-1.el7.elrepo.x86_64.rpm
-                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-tools-libs-4.19.6-1.el7.elrepo.x86_64.rpm
-                yum install -y https://elrepo.org/linux/kernel/el7/x86_64/RPMS/kernel-ml-tools-4.19.6-1.el7.elrepo.x86_64.rpm
+                yum install -y https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/centos7/kernel-ml-devel-4.19.7-1.el7.elrepo.x86_64.rpm
+                yum install -y https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/centos7/kernel-ml-tools-libs-4.19.7-1.el7.elrepo.x86_64.rpm
+                yum install -y https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/centos7/kernel-ml-tools-4.19.7-1.el7.elrepo.x86_64.rpm
 	elif [[ "${release}" == "debian" ]]; then
-	kernel_version="4.9.142"
+	kernel_version="4.9.143"
 		mkdir bbr && cd bbr
-		wget -N --no-check-certificate -O linux-headers_all.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.142/linux-headers-4.9.142-0409142_4.9.142-0409142.201812010931_all.deb
-		wget -N --no-check-certificate -O linux-headers_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.142/linux-headers-4.9.142-0409142-generic_4.9.142-0409142.201812010931_amd64.deb
-		wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.142/linux-image-4.9.142-0409142-generic_4.9.142-0409142.201812010931_amd64.deb
+		wget -N --no-check-certificate -O linux-headers_all.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/debian9/linux-headers-4.9.143_all.deb
+		wget -N --no-check-certificate -O linux-headers_amd64.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/debian9/linux-headers-4.9.143-generic_amd64.deb
+		wget -N --no-check-certificate -O linux-image-generic_amd64.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/debian9/linux-image-4.9.143-generic__amd64.deb
 	
 		dpkg -i linux-headers_all.deb
 		dpkg -i linux-headers_amd64.deb
 		dpkg -i linux-image-generic_amd64.deb
 		cd .. && rm -rf bbr
 	elif [[ "${release}" == "ubuntu" ]]; then
-	kernel_version="4.19.6"
+	kernel_version="4.19.7"
 	       mkdir bbr && cd bbr
-	       wget -N --no-check-certificate -O linux-headers_all.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-headers-4.19.6-041906_4.19.6-041906.201812030857_all.deb
-	       wget -N --no-check-certificate -O linux-headers_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-headers-4.19.6-041906-generic_4.19.6-041906.201812030857_amd64.deb
-	       wget -N --no-check-certificate -O linux-modules-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-modules-4.19.6-041906-generic_4.19.6-041906.201812030857_amd64.deb
-	       wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.19.6/linux-image-unsigned-4.19.6-041906-generic_4.19.6-041906.201812030857_amd64.deb
+	       wget -N --no-check-certificate -O linux-headers_all.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/ubuntu18.04/linux-headers-4.19.7_all.deb
+	       wget -N --no-check-certificate -O linux-headers_amd64.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/ubuntu18.04/linux-headers-4.19.7-generic_amd64.deb
+	       wget -N --no-check-certificate -O linux-modules-generic_amd64.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/ubuntu18.04/linux-modules-4.19.7-generic_amd64.deb
+	       wget -N --no-check-certificate -O linux-image-generic_amd64.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/ubuntu18.04/linux-image-unsigned-4.19.7-generic_amd64.deb
                dpkg -i linux-headers_all.deb
                dpkg -i linux-headers_amd64.deb
                dpkg -i linux-modules-generic_amd64.deb

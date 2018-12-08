@@ -363,6 +363,7 @@ optimizing_system(){
         sed -i '/net.ipv4.tcp_wmem/d' /etc/sysctl.conf
 	sed -i '/net.ipv4.tcp_timestamps/d' /etc/sysctl.conf
         sed -i '/net.ipv4.ip_forward/d' /etc/sysctl.conf
+	sed -i '/net.ipv4.tcp_tw_recycle/d' /etc/sysctl.conf
         sed -i '/vm.swappiness/d' /etc/sysctl.conf
 	echo "fs.file-max = 1000000
 fs.inotify.max_user_instances = 8192
@@ -387,6 +388,7 @@ net.ipv4.tcp_max_orphans = 32768
 net.ipv4.tcp_timestamps = 0
 net.ipv4.tcp_rmem = 4096 87380 67108864
 net.ipv4.tcp_wmem = 4096 65536 67108864
+net.ipv4.tcp_tw_recycle = 0
 vm.swappiness = 10
 # forward ipv4
 net.ipv4.ip_forward = 1">>/etc/sysctl.conf

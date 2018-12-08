@@ -22,21 +22,13 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 installbbr(){
 	if [[ "${release}" == "centos" ]]; then
 	kernel_version="4.19.7"
-		yum install -y wget
 		rpm --import http://${github}/RPM-GPG-KEY-elrepo.org
-		mkdir bbr && cd bbr
-                wget -N --no-check-certificate -O kernel-ml.rpm http://${github}/kernel/${release}/kernel-ml-${kernel_version}-1.el7.elrepo.x86_64.rpm
-                yum install -y kernel-ml.rpm
+                yum install -y http://${github}/kernel/${release}/kernel-ml-${kernel_version}-1.el7.elrepo.x86_64.rpm
 		yum remove -y kernel-headers
-                wget -N --no-check-certificate -O kernel-ml-headers.rpm http://${github}/kernel/${release}/kernel-ml-headers-${kernel_version}-1.el7.elrepo.x86_64.rpm
-                wget -N --no-check-certificate -O kernel-ml-devel.rpm http://${github}/kernel/${release}/kernel-ml-devel-${kernel_version}-1.el7.elrepo.x86_64.rpm
-                wget -N --no-check-certificate -O kernel-ml-tools-libs.rpm http://${github}/kernel/${release}/kernel-ml-tools-libs-${kernel_version}-1.el7.elrepo.x86_64.rpm
-                wget -N --no-check-certificate -O kernel-ml-tools.rpm http://${github}/kernel/${release}/kernel-ml-tools-${kernel_version}-1.el7.elrepo.x86_64.rpm
-		  yum install -y kernel-ml-headers.rpm
-                  yum install -y kernel-ml-devel.rpm
-                  yum install -y kernel-ml-tools-libs.rpm
-                  yum install -y kernel-ml-tools.rpm
-                  cd .. && rm -rf bbr
+                yum install -y http://${github}/kernel/${release}/kernel-ml-headers-${kernel_version}-1.el7.elrepo.x86_64.rpm
+                yum install -y http://${github}/kernel/${release}/kernel-ml-devel-${kernel_version}-1.el7.elrepo.x86_64.rpm
+                yum install -y http://${github}/kernel/${release}/kernel-ml-tools-libs-${kernel_version}-1.el7.elrepo.x86_64.rpm
+                yum install -y http://${github}/kernel/${release}/kernel-ml-tools-${kernel_version}-1.el7.elrepo.x86_64.rpm
 	elif [[ "${release}" == "debian" ]]; then
 	kernel_version="4.9.143"
 		mkdir bbr && cd bbr

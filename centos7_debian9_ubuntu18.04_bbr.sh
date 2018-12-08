@@ -32,9 +32,9 @@ installbbr(){
 	elif [[ "${release}" == "debian" ]]; then
 	kernel_version="4.9.143"
 		mkdir bbr && cd bbr
-		wget -N --no-check-certificate -O linux-headers_all.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/debian/linux-headers-4.9.143_all.deb
-		wget -N --no-check-certificate -O linux-headers_amd64.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/debian/linux-headers-4.9.143-generic_amd64.deb
-		wget -N --no-check-certificate -O linux-image-generic_amd64.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/debian/linux-image-4.9.143-generic__amd64.deb
+		wget -N --no-check-certificate -O linux-headers_all.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}_all.deb
+		wget -N --no-check-certificate -O linux-headers_amd64.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}-generic_amd64.deb
+		wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://${github}/kernel/${release}/linux-image-${kernel_version}-generic__amd64.deb
 	
 		dpkg -i linux-headers_all.deb
 		dpkg -i linux-headers_amd64.deb
@@ -43,10 +43,10 @@ installbbr(){
 	elif [[ "${release}" == "ubuntu" ]]; then
 	kernel_version="4.19.7"
 	       mkdir bbr && cd bbr
-	       wget -N --no-check-certificate -O linux-headers_all.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/ubuntu/linux-headers-4.19.7_all.deb
-	       wget -N --no-check-certificate -O linux-headers_amd64.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/ubuntu/linux-headers-4.19.7-generic_amd64.deb
-	       wget -N --no-check-certificate -O linux-modules-generic_amd64.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/ubuntu/linux-modules-4.19.7-generic_amd64.deb
-	       wget -N --no-check-certificate -O linux-image-generic_amd64.deb https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/ubuntu/linux-image-unsigned-4.19.7-generic_amd64.deb
+	       wget -N --no-check-certificate -O linux-headers_all.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}_all.deb
+	       wget -N --no-check-certificate -O linux-headers_amd64.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}-generic_amd64.deb
+	       wget -N --no-check-certificate -O linux-modules-generic_amd64.deb http://${github}/kernel/${release}/linux-modules-${kernel_version}-generic_amd64.deb
+	       wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://${github}/kernel/${release}/linux-image-unsigned-${kernel_version}-generic_amd64.deb
 	       dpkg -i linux-headers_all.deb
                dpkg -i linux-headers_amd64.deb
                dpkg -i linux-modules-generic_amd64.deb
@@ -363,7 +363,6 @@ optimizing_system(){
         sed -i '/net.ipv4.tcp_wmem/d' /etc/sysctl.conf
 	sed -i '/net.ipv4.tcp_timestamps/d' /etc/sysctl.conf
         sed -i '/net.ipv4.ip_forward/d' /etc/sysctl.conf
-	sed -i '/net.ipv4.tcp_tw_recycle/d' /etc/sysctl.conf
         sed -i '/vm.swappiness/d' /etc/sysctl.conf
 	echo "fs.file-max = 1000000
 fs.inotify.max_user_instances = 8192
@@ -388,7 +387,6 @@ net.ipv4.tcp_max_orphans = 32768
 net.ipv4.tcp_timestamps = 0
 net.ipv4.tcp_rmem = 4096 87380 67108864
 net.ipv4.tcp_wmem = 4096 65536 67108864
-net.ipv4.tcp_tw_recycle = 0
 vm.swappiness = 10
 # forward ipv4
 net.ipv4.ip_forward = 1">>/etc/sysctl.conf

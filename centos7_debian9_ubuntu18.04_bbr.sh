@@ -11,7 +11,7 @@ export PATH
 #=================================================
 
 sh_ver="1.1.9"
-github="raw.githubusercontent.com/chiakge/Linux-NetSpeed/master"
+github="raw.githubusercontent.com/zxlhhyccc/-BBR-/master"
 
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
 Info="${Green_font_prefix}[信息]${Font_color_suffix}"
@@ -22,16 +22,21 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 installbbr(){
 	if [[ "${release}" == "centos" ]]; then
 	kernel_version="4.19.7"
-		#rpm --import http://${github}/bbr/${release}/RPM-GPG-KEY-elrepo.org
-		#yum install -y http://${github}/bbr/${release}/${version}/${bit}/kernel-ml-${kernel_version}.rpm
-                yum install -y https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/centos/kernel-ml-4.19.7-1.el7.elrepo.x86_64.rpm
+		yum install -y wget
+		rpm --import http://${github}/RPM-GPG-KEY-elrepo.org
+		mkdir bbr && cd bbr
+                wget -N --no-check-certificate -O kernel-ml.rpm http://${github}/kernel/${release}/kernel-ml-${kernel_version}-1.el7.elrepo.x86_64.rpm
+                yum install -y kernel-ml.rpm
 		yum remove -y kernel-headers
-		#yum install -y http://${github}/bbr/${release}/${version}/${bit}/kernel-ml-headers-${kernel_version}.rpm
-                yum install -y https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/centos/kernel-ml-headers-4.19.7-1.el7.elrepo.x86_64.rpm
-		#yum install -y http://${github}/bbr/${release}/${version}/${bit}/kernel-ml-devel-${kernel_version}.rpm
-                yum install -y https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/centos/kernel-ml-devel-4.19.7-1.el7.elrepo.x86_64.rpm
-                yum install -y https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/centos/kernel-ml-tools-libs-4.19.7-1.el7.elrepo.x86_64.rpm
-                yum install -y https://github.com/zxlhhyccc/-BBR-/raw/master/kernel/centos/kernel-ml-tools-4.19.7-1.el7.elrepo.x86_64.rpm
+                wget -N --no-check-certificate -O kernel-ml-headers.rpm http://${github}/kernel/${release}/kernel-ml-headers-${kernel_version}-1.el7.elrepo.x86_64.rpm
+                wget -N --no-check-certificate -O kernel-ml-devel.rpm http://${github}/kernel/${release}/kernel-ml-devel-${kernel_version}-1.el7.elrepo.x86_64.rpm
+                wget -N --no-check-certificate -O kernel-ml-tools-libs.rpm http://${github}/kernel/${release}/kernel-ml-tools-libs-${kernel_version}-1.el7.elrepo.x86_64.rpm
+                wget -N --no-check-certificate -O kernel-ml-tools.rpm http://${github}/kernel/${release}/kernel-ml-tools-${kernel_version}-1.el7.elrepo.x86_64.rpm
+		  yum install -y kernel-ml-headers.rpm
+                  yum install -y kernel-ml-devel.rpm
+                  yum install -y kernel-ml-tools-libs.rpm
+                  yum install -y kernel-ml-tools.rpm
+                  cd .. && rm -rf bbr
 	elif [[ "${release}" == "debian" ]]; then
 	kernel_version="4.9.143"
 		mkdir bbr && cd bbr

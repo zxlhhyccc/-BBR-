@@ -35,7 +35,7 @@ installbbr(){
 		wget -N --no-check-certificate -O linux-headers_all.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}_all.deb
 		wget -N --no-check-certificate -O linux-headers_amd64.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}-generic_amd64.deb
 		wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://${github}/kernel/${release}/linux-image-${kernel_version}-generic__amd64.deb
-	
+		
 		dpkg -i linux-headers_all.deb
 		dpkg -i linux-headers_amd64.deb
 		dpkg -i linux-image-generic_amd64.deb
@@ -47,11 +47,12 @@ installbbr(){
 	       wget -N --no-check-certificate -O linux-headers_amd64.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}-generic_amd64.deb
 	       wget -N --no-check-certificate -O linux-modules-generic_amd64.deb http://${github}/kernel/${release}/linux-modules-${kernel_version}-generic_amd64.deb
 	       wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://${github}/kernel/${release}/linux-image-unsigned-${kernel_version}-generic_amd64.deb
+	       
 	       dpkg -i linux-headers_all.deb
-               dpkg -i linux-headers_amd64.deb
-               dpkg -i linux-modules-generic_amd64.deb
-               dpkg -i linux-image-generic_amd64.deb
-		cd .. && rm -rf bbr
+	       dpkg -i linux-headers_amd64.deb
+	       dpkg -i linux-modules-generic_amd64.deb
+	       dpkg -i linux-image-generic_amd64.deb
+	       cd .. && rm -rf bbr
 	fi
 	detele_kernel
 	BBR_grub

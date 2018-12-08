@@ -23,12 +23,12 @@ installbbr(){
 	if [[ "${release}" == "centos" ]]; then
 	kernel_version="4.19.7"
 		rpm --import http://${github}/RPM-GPG-KEY-elrepo.org
-                yum install -y http://${github}/kernel/${release}/kernel-ml-${kernel_version}-1.el7.elrepo.x86_64.rpm
+		yum install -y http://${github}/kernel/${release}/kernel-ml-${kernel_version}-1.el7.elrepo.x86_64.rpm
 		yum remove -y kernel-headers
-                yum install -y http://${github}/kernel/${release}/kernel-ml-headers-${kernel_version}-1.el7.elrepo.x86_64.rpm
-                yum install -y http://${github}/kernel/${release}/kernel-ml-devel-${kernel_version}-1.el7.elrepo.x86_64.rpm
-                yum install -y http://${github}/kernel/${release}/kernel-ml-tools-libs-${kernel_version}-1.el7.elrepo.x86_64.rpm
-                yum install -y http://${github}/kernel/${release}/kernel-ml-tools-${kernel_version}-1.el7.elrepo.x86_64.rpm
+		yum install -y http://${github}/kernel/${release}/kernel-ml-headers-${kernel_version}-1.el7.elrepo.x86_64.rpm
+		yum install -y http://${github}/kernel/${release}/kernel-ml-devel-${kernel_version}-1.el7.elrepo.x86_64.rpm
+		yum install -y http://${github}/kernel/${release}/kernel-ml-tools-libs-${kernel_version}-1.el7.elrepo.x86_64.rpm
+		yum install -y http://${github}/kernel/${release}/kernel-ml-tools-${kernel_version}-1.el7.elrepo.x86_64.rpm
 	elif [[ "${release}" == "debian" ]]; then
 	kernel_version="4.9.143"
 		mkdir bbr && cd bbr

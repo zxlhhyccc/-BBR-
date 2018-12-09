@@ -34,7 +34,7 @@ installbbr(){
 		mkdir bbr && cd bbr
 		wget -N --no-check-certificate -O linux-headers_all.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}_all.deb
 		wget -N --no-check-certificate -O linux-headers_amd64.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}-generic_amd64.deb
-		wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://${github}/kernel/${release}/linux-image-${kernel_version}-generic__amd64.deb
+		wget -N --no-check-certificate -O linux-image-generic_amd64.deb http://${github}/kernel/${release}/linux-image-${kernel_version}-generic_amd64.deb
 		
 		dpkg -i linux-headers_all.deb
 		dpkg -i linux-headers_amd64.deb

@@ -21,16 +21,16 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 #安装BBR内核
 installbbr(){
 	if [[ "${release}" == "centos" ]]; then
-	kernel_version="4.19.7"
+	kernel_version="4.19.8"
 		rpm --import http://${github}/RPM-GPG-KEY-elrepo.org
-		yum install -y http://${github}/kernel/${release}/kernel-ml-${kernel_version}-1.el7.elrepo.x86_64.rpm
+		yum install -y http://${github}/kernel/${release}/kernel-ml-${kernel_version}.rpm
 		yum remove -y kernel-headers
-		yum install -y http://${github}/kernel/${release}/kernel-ml-headers-${kernel_version}-1.el7.elrepo.x86_64.rpm
-		yum install -y http://${github}/kernel/${release}/kernel-ml-devel-${kernel_version}-1.el7.elrepo.x86_64.rpm
-		yum install -y http://${github}/kernel/${release}/kernel-ml-tools-libs-${kernel_version}-1.el7.elrepo.x86_64.rpm
-		yum install -y http://${github}/kernel/${release}/kernel-ml-tools-${kernel_version}-1.el7.elrepo.x86_64.rpm
+		yum install -y http://${github}/kernel/${release}/kernel-ml-headers-${kernel_version}.rpm
+		yum install -y http://${github}/kernel/${release}/kernel-ml-devel-${kernel_version}.rpm
+		yum install -y http://${github}/kernel/${release}/kernel-ml-tools-libs-${kernel_version}.rpm
+		yum install -y http://${github}/kernel/${release}/kernel-ml-tools-${kernel_version}.rpm
 	elif [[ "${release}" == "debian" ]]; then
-	kernel_version="4.9.143"
+	kernel_version="4.9.144"
 		mkdir bbr && cd bbr
 		wget -N --no-check-certificate -O linux-headers_all.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}_all.deb
 		wget -N --no-check-certificate -O linux-headers_amd64.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}-generic_amd64.deb
@@ -41,7 +41,7 @@ installbbr(){
 		dpkg -i linux-image-generic_amd64.deb
 		cd .. && rm -rf bbr
 	elif [[ "${release}" == "ubuntu" ]]; then
-	kernel_version="4.19.7"
+	kernel_version="4.19.8"
 	       mkdir bbr && cd bbr
 	       wget -N --no-check-certificate -O linux-headers_all.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}_all.deb
 	       wget -N --no-check-certificate -O linux-headers_amd64.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}-generic_amd64.deb

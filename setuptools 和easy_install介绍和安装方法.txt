@@ -1,3 +1,5 @@
+https://www.mvps.net/
+
 python的包使用easy_install安装非常方便，在默认情况下easy_install是没有安装的，我们需要通过下面的命令在ubuntu上安装他：
 
 sudo apt-get install python-setuptools python-dev build-essential

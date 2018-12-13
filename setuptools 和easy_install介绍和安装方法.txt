@@ -1,0 +1,245 @@
+一、 setuptools 和easy_install
+
+setuptools:setuptools 是一组由PEAK(Python Enterprise Application Kit)开发的 Python 的 distutils 工具的增强工具，可以让程序员更方便的创建和发布 Python的egg 包，特别是那些对其它包具有依赖性的状况。 由 setuptools 创建和发布的包看起来和基于 distutils 发布的包没什么不同。最终用户不需要事先安装 setuptools 甚至根本不需要知道 setuptools 的存在，而程序员也不需要附上完整的 setuptools，只需要包含一个大小约 8K 的ez_setup.py脚本作为启动模块，就可以在最终用户没有安装适当版本的 setuptools 时让这些包自动下载和安装 setuptools。
+
+easy_install: 常使用python的人员，当需要安装第三方python包时，可能会用到easy_install命令。easy_install是由PEAK(Python Enterprise Application Kit)开发的setuptools包里带的一个命令，它用来自动地从http://pypi.python.org/simple/来安装egg包，相当于perl中的cpan或PPM、RedHat中的yum命令，但是系统都没有预装easy_install命令。
+
+二、windows上安装setuptools（必须预先安装好python环境，Path=d:\python26）
+
+方法1：下载exe安装文件，setuptools-0.6c11.win32-py2.6
+
+如果以前曾经安装旧版的setuptools，则在安装之前需要将系统中的site-packages目录（以及任何其他sys.path目录）下的所有setuptools*.egg和setuptools.pth文件删除。
+
+如果之前也是使用.exe安装程序安装的setuptools，则安装前要在“添加/删除程序”中卸载旧的版本。
+
+安装完毕后，在Python的Scripts子目录下就会出现easy_install.exe程序。 确保将这个目录（例如 d:\Python26\Scripts）加入 PATH 环境变量。
+
+方法二：手工安装
+
+卸载旧版的方法与方法一 相同。
+
+下载ez_setup.py脚本， 然后在命令行运行： python ez_setup.py
+
+三、Linux上安装setuptools（（必须预先安装好python环境）
+
+Debian/Ubuntu系统可以直接使用apt-get安装：
+
+$ sudo apt-get install python-setuptools python-setuptools-dev
+
+RedHat/Centos系统可以直接使用yum安装：
+
+$ yum install python-setuptools python-setuptools-dev
+
+手工安装的话，有两种方法：
+
+方法一：通过引导程序 ez_setup.py 来安装。这个引导程序会联网下载最新版本setuptools来安装，同时也可以更新本地的setuptools。
+
+$ wget http://peak.telecommunity.com/dist/ez_setup.py
+
+$ sudo python ez_setup.py
+
+更新setuptools：
+
+sudo python ez_setup.py -U setuptools
+
+方法二：下载setuptools的egg包，然后通过sh安装。
+
+$ wget https://pypi.python.org/packages/2.6/s/setuptools/setuptools-0.6c11-py2.6.egg
+
+$ sudo sh setuptools-0.6c11-py2.6.egg
+
+方法三：源码编译安装
+
+$wget https://pypi.python.org/packages/source/s/setuptools/setuptools-5.7.tar.gz
+
+$ tar zxvf setuptools-5.7.tar.gz
+
+$ cd setuptools-5.7
+
+$ python setup.py install
+
+$ wget https://pypi.python.org/packages/source/s/setuptools/setuptools-0.6c11.tar.gz
+
+$ tar zxvf setuptools-0.6c11.tar.gz
+
+$ cd setuptools-0.6c11
+
+$ python setup.py install
+
+四 easy_install的使用
+
+1) 使用easy_install来自动安装egg包
+
+比如说要安装Python的MYSQL支持，可以执行如下命令，系统会自动在pypi网站列表里查找相关软件包：easy_install MySQL-python。
+
+通过easy_install安装软件，相关安装信息会保存到easy-install.pth文件里，路径类似如下形式：C:\Python25\Lib\site-packages\easy-install.pth。
+
+如果想删除通过easy_install安装的软件包，比如说：MySQL-python，可以执行命令：easy_install -m MySQL-python。
+
+2）将egg安装包下载到本地安装
+
+进入到安装包的目录，执行python setup.py install
+
+3）如果easy_install安装某模块有错的话，则可以自己到http://pypi.python.org/simple/python-ldap/下载，然后使用python setup.py install来安装。
+
+easy_install命令的安装方法：
+
+1、下载setuptools：
+
+wget https://pypi.python.org/packages/2.6/s/setuptools/setuptools-0.6c11.win32-py2.6.exe
+
+2、安装setuptlls
+
+3、测试easy_install命令
+
+easy_install --help
+
+安装模块
+
+easy_install package-name（比如 easy_install pylab)
+
+模块卸载
+
+easy_install -m package-name （比如easy_install -m pylab)
+
+easy_install -m 包名，可以卸载软件包，但是卸载后还要手动删除遗留文件。
+
+五、Python包管理工具——总结
+
+1、源码包ipython：
+
+https://github.com/ipython/ipython/downloads
+
+http://pypi.python.org/pypi/pyreadline
+
+http://pypi.python.org/pypi/setuptools#downloads
+
+$ python setup.py install
+
+2、二进制包：yum install ipython
+
+3、easy_install：
+
+http://pypi.python.org/pypi/setuptools
+
+$ sh setuptools-0.6c9-py2.4.egg
+
+或
+
+$ yum -y install python-setuptools python-setuptools-devel
+
+问题一：找不到python.h
+
+$ yum -y install python-devel
+
+卸载
+
+rpm -e python-setuptools
+
+##Install ipython:
+
+$ easy_install ipython
+
+4、pip（推荐）
+
+1.1先安装setuptools
+
+$wget https://pypi.python.org/packages/source/s/setuptools/setuptools-5.7.tar.gz
+
+$ tar zxvf setuptools-5.7.tar.gz
+
+$ cd setuptools-5.7
+
+$ python setup.py install
+
+1.2 再安装pip
+
+$ easy_install pip
+
+或者
+
+## Install pip
+
+$ wget https://bootstrap.pypa.io/get-pip.py
+
+$ sudo python get-pip.py
+
+或者
+
+$ wget https://pypi.python.org/packages/source/p/pip/pip-1.5.6.tar.gz
+
+$ tar zxvf pip-1.5.6.tar.gz
+
+$ cd pip-1.5.6
+
+$ python setup.py install
+
+## pip版本信息
+
+$ pip --version
+
+pip 1.5.6 from /usr/local/lib/python2.7/dist-packages (python 2.7)
+
+1.3 安装ipython
+
+$ pip install ipython
+
+注意：
+
+IPython 1.0：要求 Python ≥ 2.6.5 or ≥ 3.2.1. 不支持 Python 3.0, 3.1, or 2.5.
+
+IPython2.0：要求 Python ≥ 2.7.2 或者 ≥ 3.3.0，不支持 Python 3.0, 3.1, 3.2, 2.5 或者 2.6。
+
+如果安装ipython，因为版本问题报错，可以使用：
+
+pip install ipython==1.2.1
+
+或者
+
+$ easy_install pip
+
+IPython安装
+
+IPython 是一个 python 的交互式 shell，比默认的python shell 好用得多，支持变量自动补全，自动缩进，支持 bash shell 命令，内置了许多很有用的功能和函数。
+
+官网：http://ipython.org/
+
+# Centos
+
+sudo yum install python-ipython-notebook
+
+# Debian/Ubuntu
+
+sudo apt-get install ipython-notebook
+
+$ wget https://pypi.python.org/packages/source/i/ipython/ipython-2.2.0.tar.gz
+
+$ tar zxvf ipython-2.2.0.tar.gz
+
+$ cd ipython-2.2.0
+
+$ sudo python setup.py install
+
+模块安装位置：/usr/lib/python2.6/site-packages/ipython-1.2.1-py2.6.egg-info
+
+通过 ipython 启动。
+
+IPython魔力函数
+
+IPython的Magic函数
+
+IPython提供了功能强大、内建的Magic函数，定义为： IPython中将任何第一个字母为%的行视为Magic函数的特殊调用，可以控制IPython，为其增加许多系统功能。
+
+
+
+In [2]: %lsmagic：列出IPython所有的魔力函数
+
+In [6]: %magic：查看IPython魔力帮助信息
+
+In [18]: %quickref 分页查看帮助信息
+
+可以通过grep 和 fields 对flist进行过滤
+
+https://www.python.org/ftp/python/2.7.8/Python-2.7.8.tgz
+
+pythonbrew

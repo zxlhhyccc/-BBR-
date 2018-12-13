@@ -1,54 +1,61 @@
-Ò»¡¢ setuptools ºÍeasy_install
+pythonçš„åŒ…ä½¿ç”¨easy_installå®‰è£…éå¸¸æ–¹ä¾¿ï¼Œåœ¨é»˜è®¤æƒ…å†µä¸‹easy_installæ˜¯æ²¡æœ‰å®‰è£…çš„ï¼Œæˆ‘ä»¬éœ€è¦é€šè¿‡ä¸‹é¢çš„å‘½ä»¤åœ¨ubuntuä¸Šå®‰è£…ä»–ï¼š
 
-setuptools:setuptools ÊÇÒ»×éÓÉPEAK(Python Enterprise Application Kit)¿ª·¢µÄ Python µÄ distutils ¹¤¾ßµÄÔöÇ¿¹¤¾ß£¬¿ÉÒÔÈÃ³ÌĞòÔ±¸ü·½±ãµÄ´´½¨ºÍ·¢²¼ PythonµÄegg °ü£¬ÌØ±ğÊÇÄÇĞ©¶ÔÆäËü°ü¾ßÓĞÒÀÀµĞÔµÄ×´¿ö¡£ ÓÉ setuptools ´´½¨ºÍ·¢²¼µÄ°ü¿´ÆğÀ´ºÍ»ùÓÚ distutils ·¢²¼µÄ°üÃ»Ê²Ã´²»Í¬¡£×îÖÕÓÃ»§²»ĞèÒªÊÂÏÈ°²×° setuptools ÉõÖÁ¸ù±¾²»ĞèÒªÖªµÀ setuptools µÄ´æÔÚ£¬¶ø³ÌĞòÔ±Ò²²»ĞèÒª¸½ÉÏÍêÕûµÄ setuptools£¬Ö»ĞèÒª°üº¬Ò»¸ö´óĞ¡Ô¼ 8K µÄez_setup.py½Å±¾×÷ÎªÆô¶¯Ä£¿é£¬¾Í¿ÉÒÔÔÚ×îÖÕÓÃ»§Ã»ÓĞ°²×°ÊÊµ±°æ±¾µÄ setuptools Ê±ÈÃÕâĞ©°ü×Ô¶¯ÏÂÔØºÍ°²×° setuptools¡£
+sudo apt-get install python-setuptools python-dev build-essential
 
-easy_install: ³£Ê¹ÓÃpythonµÄÈËÔ±£¬µ±ĞèÒª°²×°µÚÈı·½python°üÊ±£¬¿ÉÄÜ»áÓÃµ½easy_installÃüÁî¡£easy_installÊÇÓÉPEAK(Python Enterprise Application Kit)¿ª·¢µÄsetuptools°üÀï´øµÄÒ»¸öÃüÁî£¬ËüÓÃÀ´×Ô¶¯µØ´Óhttp://pypi.python.org/simple/À´°²×°egg°ü£¬Ïàµ±ÓÚperlÖĞµÄcpan»òPPM¡¢RedHatÖĞµÄyumÃüÁî£¬µ«ÊÇÏµÍ³¶¼Ã»ÓĞÔ¤×°easy_installÃüÁî¡£
+å®‰è£…æ˜¯éœ€è¦ç½‘ç»œæ”¯æŒçš„ï¼Œå®‰è£…ç¨‹åºä¼šä»cn.archive.ubuntu.comä¸‹è½½éœ€è¦çš„å®‰è£…åŒ…
 
-¶ş¡¢windowsÉÏ°²×°setuptools£¨±ØĞëÔ¤ÏÈ°²×°ºÃpython»·¾³£¬Path=d:\python26£©
 
-·½·¨1£ºÏÂÔØexe°²×°ÎÄ¼ş£¬setuptools-0.6c11.win32-py2.6
+ä¸€ã€ setuptools å’Œeasy_install
 
-Èç¹ûÒÔÇ°Ôø¾­°²×°¾É°æµÄsetuptools£¬ÔòÔÚ°²×°Ö®Ç°ĞèÒª½«ÏµÍ³ÖĞµÄsite-packagesÄ¿Â¼£¨ÒÔ¼°ÈÎºÎÆäËûsys.pathÄ¿Â¼£©ÏÂµÄËùÓĞsetuptools*.eggºÍsetuptools.pthÎÄ¼şÉ¾³ı¡£
+setuptools:setuptools æ˜¯ä¸€ç»„ç”±PEAK(Python Enterprise Application Kit)å¼€å‘çš„ Python çš„ distutils å·¥å…·çš„å¢å¼ºå·¥å…·ï¼Œå¯ä»¥è®©ç¨‹åºå‘˜æ›´æ–¹ä¾¿çš„åˆ›å»ºå’Œå‘å¸ƒ Pythonçš„egg åŒ…ï¼Œç‰¹åˆ«æ˜¯é‚£äº›å¯¹å…¶å®ƒåŒ…å…·æœ‰ä¾èµ–æ€§çš„çŠ¶å†µã€‚ ç”± setuptools åˆ›å»ºå’Œå‘å¸ƒçš„åŒ…çœ‹èµ·æ¥å’ŒåŸºäº distutils å‘å¸ƒçš„åŒ…æ²¡ä»€ä¹ˆä¸åŒã€‚æœ€ç»ˆç”¨æˆ·ä¸éœ€è¦äº‹å…ˆå®‰è£… setuptools ç”šè‡³æ ¹æœ¬ä¸éœ€è¦çŸ¥é“ setuptools çš„å­˜åœ¨ï¼Œè€Œç¨‹åºå‘˜ä¹Ÿä¸éœ€è¦é™„ä¸Šå®Œæ•´çš„ setuptoolsï¼Œåªéœ€è¦åŒ…å«ä¸€ä¸ªå¤§å°çº¦ 8K çš„ez_setup.pyè„šæœ¬ä½œä¸ºå¯åŠ¨æ¨¡å—ï¼Œå°±å¯ä»¥åœ¨æœ€ç»ˆç”¨æˆ·æ²¡æœ‰å®‰è£…é€‚å½“ç‰ˆæœ¬çš„ setuptools æ—¶è®©è¿™äº›åŒ…è‡ªåŠ¨ä¸‹è½½å’Œå®‰è£… setuptoolsã€‚
 
-Èç¹ûÖ®Ç°Ò²ÊÇÊ¹ÓÃ.exe°²×°³ÌĞò°²×°µÄsetuptools£¬Ôò°²×°Ç°ÒªÔÚ¡°Ìí¼Ó/É¾³ı³ÌĞò¡±ÖĞĞ¶ÔØ¾ÉµÄ°æ±¾¡£
+easy_install: å¸¸ä½¿ç”¨pythonçš„äººå‘˜ï¼Œå½“éœ€è¦å®‰è£…ç¬¬ä¸‰æ–¹pythonåŒ…æ—¶ï¼Œå¯èƒ½ä¼šç”¨åˆ°easy_installå‘½ä»¤ã€‚easy_installæ˜¯ç”±PEAK(Python Enterprise Application Kit)å¼€å‘çš„setuptoolsåŒ…é‡Œå¸¦çš„ä¸€ä¸ªå‘½ä»¤ï¼Œå®ƒç”¨æ¥è‡ªåŠ¨åœ°ä»http://pypi.python.org/simple/æ¥å®‰è£…eggåŒ…ï¼Œç›¸å½“äºperlä¸­çš„cpanæˆ–PPMã€RedHatä¸­çš„yumå‘½ä»¤ï¼Œä½†æ˜¯ç³»ç»Ÿéƒ½æ²¡æœ‰é¢„è£…easy_installå‘½ä»¤ã€‚
 
-°²×°Íê±Ïºó£¬ÔÚPythonµÄScripts×ÓÄ¿Â¼ÏÂ¾Í»á³öÏÖeasy_install.exe³ÌĞò¡£ È·±£½«Õâ¸öÄ¿Â¼£¨ÀıÈç d:\Python26\Scripts£©¼ÓÈë PATH »·¾³±äÁ¿¡£
+äºŒã€windowsä¸Šå®‰è£…setuptoolsï¼ˆå¿…é¡»é¢„å…ˆå®‰è£…å¥½pythonç¯å¢ƒï¼ŒPath=d:\python26ï¼‰
 
-·½·¨¶ş£ºÊÖ¹¤°²×°
+æ–¹æ³•1ï¼šä¸‹è½½exeå®‰è£…æ–‡ä»¶ï¼Œsetuptools-0.6c11.win32-py2.6
 
-Ğ¶ÔØ¾É°æµÄ·½·¨Óë·½·¨Ò» ÏàÍ¬¡£
+å¦‚æœä»¥å‰æ›¾ç»å®‰è£…æ—§ç‰ˆçš„setuptoolsï¼Œåˆ™åœ¨å®‰è£…ä¹‹å‰éœ€è¦å°†ç³»ç»Ÿä¸­çš„site-packagesç›®å½•ï¼ˆä»¥åŠä»»ä½•å…¶ä»–sys.pathç›®å½•ï¼‰ä¸‹çš„æ‰€æœ‰setuptools*.eggå’Œsetuptools.pthæ–‡ä»¶åˆ é™¤ã€‚
 
-ÏÂÔØez_setup.py½Å±¾£¬ È»ºóÔÚÃüÁîĞĞÔËĞĞ£º python ez_setup.py
+å¦‚æœä¹‹å‰ä¹Ÿæ˜¯ä½¿ç”¨.exeå®‰è£…ç¨‹åºå®‰è£…çš„setuptoolsï¼Œåˆ™å®‰è£…å‰è¦åœ¨â€œæ·»åŠ /åˆ é™¤ç¨‹åºâ€ä¸­å¸è½½æ—§çš„ç‰ˆæœ¬ã€‚
 
-Èı¡¢LinuxÉÏ°²×°setuptools£¨£¨±ØĞëÔ¤ÏÈ°²×°ºÃpython»·¾³£©
+å®‰è£…å®Œæ¯•åï¼Œåœ¨Pythonçš„Scriptså­ç›®å½•ä¸‹å°±ä¼šå‡ºç°easy_install.exeç¨‹åºã€‚ ç¡®ä¿å°†è¿™ä¸ªç›®å½•ï¼ˆä¾‹å¦‚ d:\Python26\Scriptsï¼‰åŠ å…¥ PATH ç¯å¢ƒå˜é‡ã€‚
 
-Debian/UbuntuÏµÍ³¿ÉÒÔÖ±½ÓÊ¹ÓÃapt-get°²×°£º
+æ–¹æ³•äºŒï¼šæ‰‹å·¥å®‰è£…
+
+å¸è½½æ—§ç‰ˆçš„æ–¹æ³•ä¸æ–¹æ³•ä¸€ ç›¸åŒã€‚
+
+ä¸‹è½½ez_setup.pyè„šæœ¬ï¼Œ ç„¶ååœ¨å‘½ä»¤è¡Œè¿è¡Œï¼š python ez_setup.py
+
+ä¸‰ã€Linuxä¸Šå®‰è£…setuptoolsï¼ˆï¼ˆå¿…é¡»é¢„å…ˆå®‰è£…å¥½pythonç¯å¢ƒï¼‰
+
+Debian/Ubuntuç³»ç»Ÿå¯ä»¥ç›´æ¥ä½¿ç”¨apt-getå®‰è£…ï¼š
 
 $ sudo apt-get install python-setuptools python-setuptools-dev
 
-RedHat/CentosÏµÍ³¿ÉÒÔÖ±½ÓÊ¹ÓÃyum°²×°£º
+RedHat/Centosç³»ç»Ÿå¯ä»¥ç›´æ¥ä½¿ç”¨yumå®‰è£…ï¼š
 
 $ yum install python-setuptools python-setuptools-dev
 
-ÊÖ¹¤°²×°µÄ»°£¬ÓĞÁ½ÖÖ·½·¨£º
+æ‰‹å·¥å®‰è£…çš„è¯ï¼Œæœ‰ä¸¤ç§æ–¹æ³•ï¼š
 
-·½·¨Ò»£ºÍ¨¹ıÒıµ¼³ÌĞò ez_setup.py À´°²×°¡£Õâ¸öÒıµ¼³ÌĞò»áÁªÍøÏÂÔØ×îĞÂ°æ±¾setuptoolsÀ´°²×°£¬Í¬Ê±Ò²¿ÉÒÔ¸üĞÂ±¾µØµÄsetuptools¡£
+æ–¹æ³•ä¸€ï¼šé€šè¿‡å¼•å¯¼ç¨‹åº ez_setup.py æ¥å®‰è£…ã€‚è¿™ä¸ªå¼•å¯¼ç¨‹åºä¼šè”ç½‘ä¸‹è½½æœ€æ–°ç‰ˆæœ¬setuptoolsæ¥å®‰è£…ï¼ŒåŒæ—¶ä¹Ÿå¯ä»¥æ›´æ–°æœ¬åœ°çš„setuptoolsã€‚
 
 $ wget http://peak.telecommunity.com/dist/ez_setup.py
 
 $ sudo python ez_setup.py
 
-¸üĞÂsetuptools£º
+æ›´æ–°setuptoolsï¼š
 
 sudo python ez_setup.py -U setuptools
 
-·½·¨¶ş£ºÏÂÔØsetuptoolsµÄegg°ü£¬È»ºóÍ¨¹ısh°²×°¡£
+æ–¹æ³•äºŒï¼šä¸‹è½½setuptoolsçš„eggåŒ…ï¼Œç„¶åé€šè¿‡shå®‰è£…ã€‚
 
 $ wget https://pypi.python.org/packages/2.6/s/setuptools/setuptools-0.6c11-py2.6.egg
 
 $ sudo sh setuptools-0.6c11-py2.6.egg
 
-·½·¨Èı£ºÔ´Âë±àÒë°²×°
+æ–¹æ³•ä¸‰ï¼šæºç ç¼–è¯‘å®‰è£…
 
 $wget https://pypi.python.org/packages/source/s/setuptools/setuptools-5.7.tar.gz
 
@@ -66,47 +73,47 @@ $ cd setuptools-0.6c11
 
 $ python setup.py install
 
-ËÄ easy_installµÄÊ¹ÓÃ
+å›› easy_installçš„ä½¿ç”¨
 
-1) Ê¹ÓÃeasy_installÀ´×Ô¶¯°²×°egg°ü
+1) ä½¿ç”¨easy_installæ¥è‡ªåŠ¨å®‰è£…eggåŒ…
 
-±ÈÈçËµÒª°²×°PythonµÄMYSQLÖ§³Ö£¬¿ÉÒÔÖ´ĞĞÈçÏÂÃüÁî£¬ÏµÍ³»á×Ô¶¯ÔÚpypiÍøÕ¾ÁĞ±íÀï²éÕÒÏà¹ØÈí¼ş°ü£ºeasy_install MySQL-python¡£
+æ¯”å¦‚è¯´è¦å®‰è£…Pythonçš„MYSQLæ”¯æŒï¼Œå¯ä»¥æ‰§è¡Œå¦‚ä¸‹å‘½ä»¤ï¼Œç³»ç»Ÿä¼šè‡ªåŠ¨åœ¨pypiç½‘ç«™åˆ—è¡¨é‡ŒæŸ¥æ‰¾ç›¸å…³è½¯ä»¶åŒ…ï¼šeasy_install MySQL-pythonã€‚
 
-Í¨¹ıeasy_install°²×°Èí¼ş£¬Ïà¹Ø°²×°ĞÅÏ¢»á±£´æµ½easy-install.pthÎÄ¼şÀï£¬Â·¾¶ÀàËÆÈçÏÂĞÎÊ½£ºC:\Python25\Lib\site-packages\easy-install.pth¡£
+é€šè¿‡easy_installå®‰è£…è½¯ä»¶ï¼Œç›¸å…³å®‰è£…ä¿¡æ¯ä¼šä¿å­˜åˆ°easy-install.pthæ–‡ä»¶é‡Œï¼Œè·¯å¾„ç±»ä¼¼å¦‚ä¸‹å½¢å¼ï¼šC:\Python25\Lib\site-packages\easy-install.pthã€‚
 
-Èç¹ûÏëÉ¾³ıÍ¨¹ıeasy_install°²×°µÄÈí¼ş°ü£¬±ÈÈçËµ£ºMySQL-python£¬¿ÉÒÔÖ´ĞĞÃüÁî£ºeasy_install -m MySQL-python¡£
+å¦‚æœæƒ³åˆ é™¤é€šè¿‡easy_installå®‰è£…çš„è½¯ä»¶åŒ…ï¼Œæ¯”å¦‚è¯´ï¼šMySQL-pythonï¼Œå¯ä»¥æ‰§è¡Œå‘½ä»¤ï¼šeasy_install -m MySQL-pythonã€‚
 
-2£©½«egg°²×°°üÏÂÔØµ½±¾µØ°²×°
+2ï¼‰å°†eggå®‰è£…åŒ…ä¸‹è½½åˆ°æœ¬åœ°å®‰è£…
 
-½øÈëµ½°²×°°üµÄÄ¿Â¼£¬Ö´ĞĞpython setup.py install
+è¿›å…¥åˆ°å®‰è£…åŒ…çš„ç›®å½•ï¼Œæ‰§è¡Œpython setup.py install
 
-3£©Èç¹ûeasy_install°²×°Ä³Ä£¿éÓĞ´íµÄ»°£¬Ôò¿ÉÒÔ×Ô¼ºµ½http://pypi.python.org/simple/python-ldap/ÏÂÔØ£¬È»ºóÊ¹ÓÃpython setup.py installÀ´°²×°¡£
+3ï¼‰å¦‚æœeasy_installå®‰è£…æŸæ¨¡å—æœ‰é”™çš„è¯ï¼Œåˆ™å¯ä»¥è‡ªå·±åˆ°http://pypi.python.org/simple/python-ldap/ä¸‹è½½ï¼Œç„¶åä½¿ç”¨python setup.py installæ¥å®‰è£…ã€‚
 
-easy_installÃüÁîµÄ°²×°·½·¨£º
+easy_installå‘½ä»¤çš„å®‰è£…æ–¹æ³•ï¼š
 
-1¡¢ÏÂÔØsetuptools£º
+1ã€ä¸‹è½½setuptoolsï¼š
 
 wget https://pypi.python.org/packages/2.6/s/setuptools/setuptools-0.6c11.win32-py2.6.exe
 
-2¡¢°²×°setuptlls
+2ã€å®‰è£…setuptlls
 
-3¡¢²âÊÔeasy_installÃüÁî
+3ã€æµ‹è¯•easy_installå‘½ä»¤
 
 easy_install --help
 
-°²×°Ä£¿é
+å®‰è£…æ¨¡å—
 
-easy_install package-name£¨±ÈÈç easy_install pylab)
+easy_install package-nameï¼ˆæ¯”å¦‚ easy_install pylab)
 
-Ä£¿éĞ¶ÔØ
+æ¨¡å—å¸è½½
 
-easy_install -m package-name £¨±ÈÈçeasy_install -m pylab)
+easy_install -m package-name ï¼ˆæ¯”å¦‚easy_install -m pylab)
 
-easy_install -m °üÃû£¬¿ÉÒÔĞ¶ÔØÈí¼ş°ü£¬µ«ÊÇĞ¶ÔØºó»¹ÒªÊÖ¶¯É¾³ıÒÅÁôÎÄ¼ş¡£
+easy_install -m åŒ…åï¼Œå¯ä»¥å¸è½½è½¯ä»¶åŒ…ï¼Œä½†æ˜¯å¸è½½åè¿˜è¦æ‰‹åŠ¨åˆ é™¤é—ç•™æ–‡ä»¶ã€‚
 
-Îå¡¢Python°ü¹ÜÀí¹¤¾ß¡ª¡ª×Ü½á
+äº”ã€PythonåŒ…ç®¡ç†å·¥å…·â€”â€”æ€»ç»“
 
-1¡¢Ô´Âë°üipython£º
+1ã€æºç åŒ…ipythonï¼š
 
 https://github.com/ipython/ipython/downloads
 
@@ -116,23 +123,23 @@ http://pypi.python.org/pypi/setuptools#downloads
 
 $ python setup.py install
 
-2¡¢¶ş½øÖÆ°ü£ºyum install ipython
+2ã€äºŒè¿›åˆ¶åŒ…ï¼šyum install ipython
 
-3¡¢easy_install£º
+3ã€easy_installï¼š
 
 http://pypi.python.org/pypi/setuptools
 
 $ sh setuptools-0.6c9-py2.4.egg
 
-»ò
+æˆ–
 
 $ yum -y install python-setuptools python-setuptools-devel
 
-ÎÊÌâÒ»£ºÕÒ²»µ½python.h
+é—®é¢˜ä¸€ï¼šæ‰¾ä¸åˆ°python.h
 
 $ yum -y install python-devel
 
-Ğ¶ÔØ
+å¸è½½
 
 rpm -e python-setuptools
 
@@ -140,9 +147,9 @@ rpm -e python-setuptools
 
 $ easy_install ipython
 
-4¡¢pip£¨ÍÆ¼ö£©
+4ã€pipï¼ˆæ¨èï¼‰
 
-1.1ÏÈ°²×°setuptools
+1.1å…ˆå®‰è£…setuptools
 
 $wget https://pypi.python.org/packages/source/s/setuptools/setuptools-5.7.tar.gz
 
@@ -152,11 +159,11 @@ $ cd setuptools-5.7
 
 $ python setup.py install
 
-1.2 ÔÙ°²×°pip
+1.2 å†å®‰è£…pip
 
 $ easy_install pip
 
-»òÕß
+æˆ–è€…
 
 ## Install pip
 
@@ -164,7 +171,7 @@ $ wget https://bootstrap.pypa.io/get-pip.py
 
 $ sudo python get-pip.py
 
-»òÕß
+æˆ–è€…
 
 $ wget https://pypi.python.org/packages/source/p/pip/pip-1.5.6.tar.gz
 
@@ -174,35 +181,35 @@ $ cd pip-1.5.6
 
 $ python setup.py install
 
-## pip°æ±¾ĞÅÏ¢
+## pipç‰ˆæœ¬ä¿¡æ¯
 
 $ pip --version
 
 pip 1.5.6 from /usr/local/lib/python2.7/dist-packages (python 2.7)
 
-1.3 °²×°ipython
+1.3 å®‰è£…ipython
 
 $ pip install ipython
 
-×¢Òâ£º
+æ³¨æ„ï¼š
 
-IPython 1.0£ºÒªÇó Python ¡İ 2.6.5 or ¡İ 3.2.1. ²»Ö§³Ö Python 3.0, 3.1, or 2.5.
+IPython 1.0ï¼šè¦æ±‚ Python â‰¥ 2.6.5 or â‰¥ 3.2.1. ä¸æ”¯æŒ Python 3.0, 3.1, or 2.5.
 
-IPython2.0£ºÒªÇó Python ¡İ 2.7.2 »òÕß ¡İ 3.3.0£¬²»Ö§³Ö Python 3.0, 3.1, 3.2, 2.5 »òÕß 2.6¡£
+IPython2.0ï¼šè¦æ±‚ Python â‰¥ 2.7.2 æˆ–è€… â‰¥ 3.3.0ï¼Œä¸æ”¯æŒ Python 3.0, 3.1, 3.2, 2.5 æˆ–è€… 2.6ã€‚
 
-Èç¹û°²×°ipython£¬ÒòÎª°æ±¾ÎÊÌâ±¨´í£¬¿ÉÒÔÊ¹ÓÃ£º
+å¦‚æœå®‰è£…ipythonï¼Œå› ä¸ºç‰ˆæœ¬é—®é¢˜æŠ¥é”™ï¼Œå¯ä»¥ä½¿ç”¨ï¼š
 
 pip install ipython==1.2.1
 
-»òÕß
+æˆ–è€…
 
 $ easy_install pip
 
-IPython°²×°
+IPythonå®‰è£…
 
-IPython ÊÇÒ»¸ö python µÄ½»»¥Ê½ shell£¬±ÈÄ¬ÈÏµÄpython shell ºÃÓÃµÃ¶à£¬Ö§³Ö±äÁ¿×Ô¶¯²¹È«£¬×Ô¶¯Ëõ½ø£¬Ö§³Ö bash shell ÃüÁî£¬ÄÚÖÃÁËĞí¶àºÜÓĞÓÃµÄ¹¦ÄÜºÍº¯Êı¡£
+IPython æ˜¯ä¸€ä¸ª python çš„äº¤äº’å¼ shellï¼Œæ¯”é»˜è®¤çš„python shell å¥½ç”¨å¾—å¤šï¼Œæ”¯æŒå˜é‡è‡ªåŠ¨è¡¥å…¨ï¼Œè‡ªåŠ¨ç¼©è¿›ï¼Œæ”¯æŒ bash shell å‘½ä»¤ï¼Œå†…ç½®äº†è®¸å¤šå¾ˆæœ‰ç”¨çš„åŠŸèƒ½å’Œå‡½æ•°ã€‚
 
-¹ÙÍø£ºhttp://ipython.org/
+å®˜ç½‘ï¼šhttp://ipython.org/
 
 # Centos
 
@@ -220,25 +227,25 @@ $ cd ipython-2.2.0
 
 $ sudo python setup.py install
 
-Ä£¿é°²×°Î»ÖÃ£º/usr/lib/python2.6/site-packages/ipython-1.2.1-py2.6.egg-info
+æ¨¡å—å®‰è£…ä½ç½®ï¼š/usr/lib/python2.6/site-packages/ipython-1.2.1-py2.6.egg-info
 
-Í¨¹ı ipython Æô¶¯¡£
+é€šè¿‡ ipython å¯åŠ¨ã€‚
 
-IPythonÄ§Á¦º¯Êı
+IPythoné­”åŠ›å‡½æ•°
 
-IPythonµÄMagicº¯Êı
+IPythonçš„Magicå‡½æ•°
 
-IPythonÌá¹©ÁË¹¦ÄÜÇ¿´ó¡¢ÄÚ½¨µÄMagicº¯Êı£¬¶¨ÒåÎª£º IPythonÖĞ½«ÈÎºÎµÚÒ»¸ö×ÖÄ¸Îª%µÄĞĞÊÓÎªMagicº¯ÊıµÄÌØÊâµ÷ÓÃ£¬¿ÉÒÔ¿ØÖÆIPython£¬ÎªÆäÔö¼ÓĞí¶àÏµÍ³¹¦ÄÜ¡£
+IPythonæä¾›äº†åŠŸèƒ½å¼ºå¤§ã€å†…å»ºçš„Magicå‡½æ•°ï¼Œå®šä¹‰ä¸ºï¼š IPythonä¸­å°†ä»»ä½•ç¬¬ä¸€ä¸ªå­—æ¯ä¸º%çš„è¡Œè§†ä¸ºMagicå‡½æ•°çš„ç‰¹æ®Šè°ƒç”¨ï¼Œå¯ä»¥æ§åˆ¶IPythonï¼Œä¸ºå…¶å¢åŠ è®¸å¤šç³»ç»ŸåŠŸèƒ½ã€‚
 
 
 
-In [2]: %lsmagic£ºÁĞ³öIPythonËùÓĞµÄÄ§Á¦º¯Êı
+In [2]: %lsmagicï¼šåˆ—å‡ºIPythonæ‰€æœ‰çš„é­”åŠ›å‡½æ•°
 
-In [6]: %magic£º²é¿´IPythonÄ§Á¦°ïÖúĞÅÏ¢
+In [6]: %magicï¼šæŸ¥çœ‹IPythoné­”åŠ›å¸®åŠ©ä¿¡æ¯
 
-In [18]: %quickref ·ÖÒ³²é¿´°ïÖúĞÅÏ¢
+In [18]: %quickref åˆ†é¡µæŸ¥çœ‹å¸®åŠ©ä¿¡æ¯
 
-¿ÉÒÔÍ¨¹ıgrep ºÍ fields ¶Ôflist½øĞĞ¹ıÂË
+å¯ä»¥é€šè¿‡grep å’Œ fields å¯¹flistè¿›è¡Œè¿‡æ»¤
 
 https://www.python.org/ftp/python/2.7.8/Python-2.7.8.tgz
 

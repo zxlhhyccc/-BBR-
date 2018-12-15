@@ -65,20 +65,13 @@ installbbr(){
 	fi
 }
 
-#安装wget
-install_wget(){
-        if [[ "${release}" == "centos" ]]; then
-        yum -y install wget
-        fi
-} 
-
 #安装libssl1.1
 install_libssl1.1(){
         if [[ "${release}" == "ubuntu" ]]; then
-        mkdir libssl1.1 && cd libssl1.1
+        mkdir libssl && cd libssl
         wget -N --no-check-certificate -O libssl1.1_amd64.deb http://${github}/libssl1.1_1.1.0g-2ubuntu4.1_amd64.deb
-        dpkg -i libssl1.1_amd.deb
-        cd .. && rm -rf libssl1.1   
+        dpkg -i libssl1.1_amd64.deb
+        cd .. && rm -rf libssl  
         fi
 }
 
@@ -476,9 +469,8 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
  ${Green_font_prefix}9.${Font_color_suffix}  卸载全部加速
  ${Green_font_prefix}10.${Font_color_suffix} 系统配置优化
  ${Green_font_prefix}11.${Font_color_suffix} 设置root用户登录 
- ${Green_font_prefix}12.${Font_color_suffix} 安装wget(centos7使用)
- ${Green_font_prefix}13.${Font_color_suffix} 安装libssl1.1(ubuntu16.04需先安装否则有报错)
- ${Green_font_prefix}14.${Font_color_suffix} 安装nginx(安装nginx1.14及以上支持TLSv1.3)
+ ${Green_font_prefix}12.${Font_color_suffix} 安装libssl1.1(ubuntu16.04需先安装否则有报错)
+ ${Green_font_prefix}13.${Font_color_suffix} 安装nginx(安装nginx1.14及以上支持TLSv1.3)
  ${Green_font_prefix}a.${Font_color_suffix}  退出脚本
 ————————————————————————————————" && echo
 
@@ -490,7 +482,7 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
 		
 	fi
 echo
-read -p " 请输入数字 [0-14,a]:" num
+read -p " 请输入数字 [0-13,a]:" num
 case "$num" in
 	0)
 	Update_Shell
@@ -529,12 +521,9 @@ case "$num" in
 	Modify_root
 	;;
 	12)
-	install_wget
-	;;
-	13)
 	install_libssl1.1
 	;;
-	14)
+	13)
 	install_nginx
 	;;
 	a)
@@ -542,7 +531,7 @@ case "$num" in
 	;;
 	*)
 	clear
-	echo -e "${Error}:请输入正确数字 [0-12,a]"
+	echo -e "${Error}:请输入正确数字 [0-13,a]"
 	sleep 5s
 	start_menu
 	;;

@@ -87,8 +87,7 @@ Modify_root(){
 
         # 重启ssh服务
         systemctl restart sshd
-        fi
-}
+	
         elif [[ "${release}" == "ubuntu" ]]; then
         # 修改root 密码
         echo "请输入 passwd  命令修改root用户的密码"

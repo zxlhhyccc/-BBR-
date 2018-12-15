@@ -112,7 +112,9 @@ EOF
                  rm -rf add nginx_signing.key >/dev/null 2>&1
         elif [[ "${release}" == "ubuntu" ]]; then
                  echo "deb http://nginx.org/packages/mainline/ubuntu/ bionic nginx" >> /etc/apt/sources.list
+		 echo "deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx" >> /etc/apt/sources.list
                  echo "deb-src http://nginx.org/packages/mainline/ubuntu/ bionic nginx" >> /etc/apt/sources.list
+		 echo "deb-src http://nginx.org/packages/mainline/ubuntu/ xenial nginx" >> /etc/apt/sources.list
                  wget -N --no-check-certificate https://nginx.org/keys/nginx_signing.key >/dev/null 2>&1
 		 apt-key add nginx_signing.key >/dev/null 2>&1
                  apt-get update

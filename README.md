@@ -56,7 +56,7 @@ C、centos7和debian9合一安装魔改版BBR内核脚本（菜单安装gcc-4.9�
 
 wget -N --no-check-certificate -O bbr.sh "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7_debian9_bbr.sh" && chmod +x bbr.sh && ./bbr.sh
 
-D、centos7、debian9、ubuntu18.04三合一安装魔改版BBR内核脚本（增加了安装nginx，且调整了相应菜单）：
+D、centos7、debian9、ubuntu18.04/18.10三合一安装魔改版BBR内核脚本（增加了安装nginx，且调整了相应菜单）：
 ------
 wget -N --no-check-certificate -O bbr.sh "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7_debian9_ubuntu18.04_bbr.sh" && chmod +x bbr.sh && ./bbr.sh
 

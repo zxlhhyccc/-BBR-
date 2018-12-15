@@ -64,7 +64,39 @@ installbbr(){
 		reboot
 	fi
 }
- 
+
+#安装wget
+install_wget(){
+        if [[ "${release}" == "centos" ]]; then
+        yum -y install wget
+        fi
+} 
+
+#安装libssl1.1
+install_libssl1.1(){
+        if [[ "${release}" == "ubuntu" ]]; then
+        mkdir libssl1.1 && cd libssl1.1
+        wget -N --no-check-certificate -O libssl1.1_amd64.deb http://${github}/libssl1.1_1.1.0g-2ubuntu4.1_amd64.deb
+        dpkg -i libssl1.1_amd.deb
+        cd .. && rm -rf libssl1.1   
+        fi
+}
+
+# 一键启用root帐号命令
+Modify_root(){
+        if [[ "${release}" == "centos" || "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
+        # 修改root 密码
+        echo "请输入 passwd  命令修改root用户的密码"
+        passwd root
+        # 启用root密码登陆
+        sed -i "s/PermitRootLogin.*/PermitRootLogin yes/g"   /etc/ssh/sshd_config
+        sed -i "s/PasswordAuthentication.*/PasswordAuthentication yes/g"   /etc/ssh/sshd_config
+
+        # 重启ssh服务
+        systemctl restart sshd
+        fi
+}
+
 #安装nginx
 install_nginx(){
         if [[ "${release}" == "centos" ]]; then
@@ -438,12 +470,15 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
  ${Green_font_prefix}4.${Font_color_suffix} 使用BBR魔改版加速(centos7/debian9使用)
  ${Green_font_prefix}5.${Font_color_suffix} 使用暴力BBR魔改版加速(不支持部分系统，centos7/debian9使用)
  ${Green_font_prefix}6.${Font_color_suffix} 使用Lotserver(锐速)加速(仅支持低版本内核)
- ${Green_font_prefix}7.${Font_color_suffix} 使用BBR魔改版加速(ubuntu18.04使用)
- ${Green_font_prefix}8.${Font_color_suffix} 使用暴力BBR魔改版加速(不支持部分系统，ubuntu18.04使用)
+ ${Green_font_prefix}7.${Font_color_suffix} 使用BBR魔改版加速(ubuntu16.04/18.04/18.10使用)
+ ${Green_font_prefix}8.${Font_color_suffix} 使用暴力BBR魔改版加速(不支持部分系统，ubuntu16.01/18.04/18.10使用)
 ————————————杂项管理————————————
  ${Green_font_prefix}9.${Font_color_suffix}  卸载全部加速
  ${Green_font_prefix}10.${Font_color_suffix} 系统配置优化
- ${Green_font_prefix}11.${Font_color_suffix} 安装nginx(安装nginx1.14及以上支持TLSv1.3)
+ ${Green_font_prefix}11.${Font_color_suffix} 设置root用户登录 
+ ${Green_font_prefix}12.${Font_color_suffix} 安装wget(centos7使用)
+ ${Green_font_prefix}13.${Font_color_suffix} 安装libssl1.1(ubuntu16.04需先安装否则有报错)
+ ${Green_font_prefix}14.${Font_color_suffix} 安装nginx(安装nginx1.14及以上支持TLSv1.3)
  ${Green_font_prefix}a.${Font_color_suffix}  退出脚本
 ————————————————————————————————" && echo
 
@@ -455,7 +490,7 @@ echo && echo -e " TCP加速 一键安装管理脚本 ${Red_font_prefix}[v${sh_ve
 		
 	fi
 echo
-read -p " 请输入数字 [0-11,a]:" num
+read -p " 请输入数字 [0-14,a]:" num
 case "$num" in
 	0)
 	Update_Shell
@@ -491,6 +526,15 @@ case "$num" in
 	optimizing_system
 	;;
 	11)
+	Modify_root
+	;;
+	12)
+	install_wget
+	;;
+	13)
+	install_libssl1.1
+	;;
+	14)
 	install_nginx
 	;;
 	a)

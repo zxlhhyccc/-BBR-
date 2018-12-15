@@ -86,8 +86,7 @@ Modify_root(){
         sed -i "s/PasswordAuthentication.*/PasswordAuthentication yes/g"   /etc/ssh/sshd_config
 
         # 重启ssh服务
-        systemctl restart sshd
-	
+        systemctl restart sshd	
         elif [[ "${release}" == "ubuntu" ]]; then
         # 修改root 密码
         echo "请输入 passwd  命令修改root用户的密码"
@@ -99,7 +98,6 @@ Modify_root(){
         # 重启ssh服务
         systemctl restart sshd
         fi
-   fi
 }
 
 #安装nginx

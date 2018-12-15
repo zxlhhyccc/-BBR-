@@ -84,7 +84,6 @@ Modify_root(){
         # 启用root密码登陆
         sed -i "s/PermitRootLogin.*/PermitRootLogin yes/g"   /etc/ssh/sshd_config
         sed -i "s/PasswordAuthentication.*/PasswordAuthentication yes/g"   /etc/ssh/sshd_config
-
         # 重启ssh服务
         systemctl restart sshd	
         elif [[ "${release}" == "ubuntu" ]]; then
@@ -94,7 +93,6 @@ Modify_root(){
         # 启用root密码登陆
         sed -i "s/#PermitRootLogin.*/PermitRootLogin yes/g"   /etc/ssh/sshd_config
         sed -i "s/PasswordAuthentication.*/PasswordAuthentication yes/g"   /etc/ssh/sshd_config
-
         # 重启ssh服务
         systemctl restart sshd
         fi

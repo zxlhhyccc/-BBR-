@@ -280,6 +280,7 @@ startbbrmod_nanqinlang(){
 	echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
 	echo "net.ipv4.tcp_congestion_control=nanqinlang" >> /etc/sysctl.conf
 	sysctl -p
+    cd .. && rm -rf bbrmod
 	echo -e "${Info}魔改版BBR启动成功！"
 }
 #编译并启用BBR魔改(ubuntu18.04)
@@ -307,6 +308,7 @@ startbbrmod_nanqinlang_ubuntu18.04(){
 	echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
 	echo "net.ipv4.tcp_congestion_control=nanqinlang" >> /etc/sysctl.conf
 	sysctl -p
+    cd .. && rm -rf bbrmod
 	echo -e "${Info}魔改版BBR启动成功！"
 }
 

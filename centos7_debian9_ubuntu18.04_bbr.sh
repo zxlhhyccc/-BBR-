@@ -98,7 +98,8 @@ Modify_root(){
 
         # 重启ssh服务
         systemctl restart sshd
-        fi	
+        fi
+   fi
 }
 
 #安装nginx

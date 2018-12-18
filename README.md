@@ -58,7 +58,7 @@ wget -N --no-check-certificate -O bbr.sh "https://raw.githubusercontent.com/zxlh
 
 D、centos7、debian9、ubuntu16.04/18.04/18.10三合一安装魔改版BBR内核脚本（增加了安装nginx，且调整了相应菜单）：
 ------
-wget -N --no-check-certificate -O bbr.sh "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7_debian9_ubuntu18.04_bbr.sh" && chmod +x bbr.sh && ./bbr.sh
+wget -N --no-check-certificate -O bbr.sh "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7_debian9_ubuntu18.04_bbr.sh"  && chmod +x bbr.sh && ./bbr.sh
 
 注意：修正了debian9在安装内核后重新运行该脚本可能需要等待一会才能下载脚本问题,增加了设置root用户，再就是,ubuntu16.04需要先安装： libssl1.1。
 

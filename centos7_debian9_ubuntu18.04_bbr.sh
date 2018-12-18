@@ -21,7 +21,7 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 #安装BBR内核
 installbbr(){
 	if [[ "${release}" == "centos" ]]; then
-	kernel_version="4.19.9"
+	kernel_version="4.19.10"
 		rpm --import http://${github}/RPM-GPG-KEY-elrepo.org
 		yum install -y http://${github}/kernel/${release}/kernel-ml-${kernel_version}.rpm
 		yum remove -y kernel-headers

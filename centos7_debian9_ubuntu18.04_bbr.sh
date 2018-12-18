@@ -386,6 +386,7 @@ optimizing_system(){
         sed -i '/net.ipv4.tcp_syncookies/d' /etc/sysctl.conf
         sed -i '/net.ipv4.ip_forward/d' /etc/sysctl.conf
         sed -i '/net.ipv4.tcp_tw_reuse/d' /etc/sysctl.conf
+	sed -i '/net.ipv4.tcp_tw_recycle/d' /etc/sysctl.conf
         sed -i '/net.ipv4.tcp_fin_timeout/d' /etc/sysctl.conf
         sed -i '/net.ipv4.tcp_keepalive_time/d' /etc/sysctl.conf
         sed -i '/net.ipv4.ip_local_port_range/d' /etc/sysctl.conf
@@ -411,6 +412,7 @@ net.core.somaxconn = 32768
 net.ipv4.tcp_syncookies = 1
 net.ipv4.ip_forward = 1
 net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_tw_recycle = 0
 net.ipv4.tcp_fin_timeout = 30
 net.ipv4.tcp_keepalive_time = 1200
 net.ipv4.ip_local_port_range = 10000 65000

@@ -7,7 +7,7 @@
 1、修改版本号，如最新版本（4.9.140）：kernel_version="4.9.140"
 
 debian、ubuntu的内核版本下载地址（4.9.*内核为debian的，4.19.*内核为ubuntu的）：
-
+```
 http://kernel.ubuntu.com/~kernel-ppa/mainline/
 
 2、修改下载最新内核，如版本号（4.9.140）：

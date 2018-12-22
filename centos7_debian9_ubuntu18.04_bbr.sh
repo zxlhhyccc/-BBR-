@@ -30,7 +30,7 @@ installbbr(){
 		yum install -y http://${github}/kernel/${release}/kernel-ml-tools-libs-${kernel_version}.rpm
 		yum install -y http://${github}/kernel/${release}/kernel-ml-tools-${kernel_version}.rpm
 	elif [[ "${release}" == "debian" ]]; then
-	kernel_version="4.9.146"
+	kernel_version="4.9.147"
 		mkdir bbr && cd bbr
 		wget -N --no-check-certificate -O linux-headers_all.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}_all.deb
 		wget -N --no-check-certificate -O linux-headers_amd64.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}-generic_amd64.deb

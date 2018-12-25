@@ -101,6 +101,7 @@ Modify_root(){
 #安装nginx
 install_nginx(){
         if [[ "${release}" == "centos" ]]; then
+	         setsebool -P httpd_can_network_connect 1
                  touch /etc/yum.repos.d/nginx.repo
 cat <<EOF > /etc/yum.repos.d/nginx.repo
 [nginx]

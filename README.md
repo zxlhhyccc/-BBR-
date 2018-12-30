@@ -60,6 +60,10 @@ D、centos7、debian9、ubuntu16.04/18.04/18.10三合一安装魔改版BBR内核
 `````
 wget -N --no-check-certificate -O bbr.sh "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7_debian9_ubuntu18.04_bbr.sh"  && chmod +x bbr.sh && ./bbr.sh
 `````
+E、centos7、debian9、ubuntu16.04/18.04/18.10三合一安装魔改版BBR内核脚本（增加了安装bbrplus内核并开启bbrplus，且调整了相应菜单）：
+`````
+wget -N --no-check-certificate -O bbr.sh "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7-debian9-ubuntu.sh"  && chmod +x bbr.sh && ./bbr.sh
+``````
 debian内核升级完成后单独卸载无效软件包（也可不卸载）：
 `````
 sudo apt autoremove -y gettext-base grub-common grub2-common libfreetype6 libfuse2 libpng16-16

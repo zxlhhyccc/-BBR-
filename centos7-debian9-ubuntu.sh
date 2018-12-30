@@ -22,14 +22,14 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 installbbrplus(){
 	kernel_version="4.14.90"
 	if [[ "${release}" == "centos" ]]; then
-		yum install -y https://github.com/zxlhhyccc/bbrplus/raw/master/centos7/x86_64/kernel-4.14.90.rpm
+		yum install -y http://${github}/bbrpluskernel/${release}/kernel-${kernel_version}.rpm
 		yum remove -y kernel-headers
 	elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
 		mkdir bbrplus && cd bbrplus
-		wget -N --no-check-certificate https://github.com/cx9208/Linux-NetSpeed/raw/master/bbrplus/debian-ubuntu/x64/linux-headers-4.14.90.deb
-		wget -N --no-check-certificate https://github.com/cx9208/Linux-NetSpeed/raw/master/bbrplus/debian-ubuntu/x64/linux-image-4.14.90.deb
-		dpkg -i linux-headers-4.14.90.deb
-		dpkg -i linux-image-4.14.90.deb
+		wget -N --no-check-certificate http://${github}/bbrpluskernel/${release}/linux-headers-${kernel_version}.deb
+		wget -N --no-check-certificate http://${github}/bbrpluskernel/${release}/linux-image-${kernel_version}.deb
+		dpkg -i linux-headers-${kernel_version}.deb
+		dpkg -i linux-image-${kernel_version}.deb
 		cd .. && rm -rf bbrplus
 	fi
 	
@@ -69,7 +69,7 @@ installbbr(){
 		dpkg -i linux-image-generic_amd64.deb
 		cd .. && rm -rf bbr
 	elif [[ "${release}" == "ubuntu" ]]; then
-	kernel_version="4.19.11"
+	kernel_version="4.19.13"
 	       mkdir bbr && cd bbr
 	       wget -N --no-check-certificate -O libssl1.1_amd64.deb http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.1_1.1.0j-1~deb9u1_amd64.deb
 	       wget -N --no-check-certificate -O linux-headers_all.deb http://${github}/kernel/${release}/linux-headers-${kernel_version}_all.deb

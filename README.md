@@ -62,7 +62,7 @@ wget -N --no-check-certificate -O bbr.sh "https://raw.githubusercontent.com/zxlh
 `````
 E、centos7、debian9、ubuntu16.04/18.04/18.10三合一安装魔改版BBR内核脚本（增加了安装bbrplus内核并开启bbrplus，且调整了相应菜单）：
 `````
-wget -N --no-check-certificate -O bbr.sh "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7-debian9-ubuntu.sh"  && chmod +x bbr.sh && ./bbr.sh
+wget -N --no-check-certificate -O bbr.sh "https://raw.githubusercontent.com/zxlhhyccc/-BBR-/master/centos7-debian9-ubuntu.sh" && chmod +x bbr.sh && ./bbr.sh
 ``````
 debian内核升级完成后单独卸载无效软件包（也可不卸载）：
 `````

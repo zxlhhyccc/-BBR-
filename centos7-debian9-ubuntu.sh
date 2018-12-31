@@ -597,18 +597,18 @@ detele_kernel(){
 			done
 			echo -e "内核卸载完毕，继续..."
 		fi
-		deb_total=`dpkg -l | grep linux-headers | awk '{print $2}' | grep -v "${kernel_version}" | wc -l`
-		if [ "${deb_total}" > "1" ]; then
-		        echo -e "检测到 ${deb_total} 个其余内核，开始卸载..."
-			for((integer = 1; integer <= ${deb_total}; integer++)); do
-				deb_del=`dpkg -l|grep linux-headers | awk '{print $2}' | grep -v "${kernel_version}" | head -${integer}`
-				apt-get purge -y ${deb_del}
-				echo -e "卸载 ${deb_del} 内核卸载完成，继续..."
-			done
-			echo -e "内核卸载完毕，继续..."
-		else
-			echo -e " 检测到 内核 数量不正确，请检查 !" && exit 1
-		fi
+		#deb_total=`dpkg -l | grep linux-headers | awk '{print $2}' | grep -v "${kernel_version}" | wc -l`
+		#if [ "${deb_total}" > "1" ]; then
+		        #echo -e "检测到 ${deb_total} 个其余内核，开始卸载..."
+			#for((integer = 1; integer <= ${deb_total}; integer++)); do
+				#deb_del=`dpkg -l|grep linux-headers | awk '{print $2}' | grep -v "${kernel_version}" | head -${integer}`
+				#apt-get purge -y ${deb_del}
+				#echo -e "卸载 ${deb_del} 内核卸载完成，继续..."
+			#done
+			#echo -e "内核卸载完毕，继续..."
+		#else
+			#echo -e " 检测到 内核 数量不正确，请检查 !" && exit 1
+		#fi
 	fi
 }
 
@@ -630,7 +630,7 @@ BBR_grub(){
         fi
     elif [[ "${release}" == "debian" || "${release}" == "ubuntu" ]]; then
          /usr/sbin/update-grub
-	 apt remove -y grub-pc-bin
+	 #apt remove -y grub-pc-bin
     fi
 }
 
